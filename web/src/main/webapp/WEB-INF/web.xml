@@ -4,6 +4,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_3.dtd">
 
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    
     <servlet>
         <servlet-name>spring-web</servlet-name>
         <servlet-class>
@@ -12,52 +22,51 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>spring-web</servlet-name>
-        <url-pattern>*.jsp</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>HelloServlet</servlet-name>
-        <servlet-class>com.tw.web.HelloServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UserServlet</servlet-name>
-        <servlet-class>com.tw.web.UserServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CreateUserServlet</servlet-name>
-        <servlet-class>com.tw.web.CreateUserServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateUserServlet</servlet-name>
-        <servlet-class>com.tw.web.UpdateUserServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteServlet</servlet-name>
-        <servlet-class>com.tw.web.DeleteUserServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>HelloServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>CreateUserServlet</servlet-name>
-        <url-pattern>/views/create</url-pattern>
-    </servlet-mapping>
+    <!--<servlet>-->
+        <!--<servlet-name>HelloServlet</servlet-name>-->
+        <!--<servlet-class>com.tw.web.HelloServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet>-->
+        <!--<servlet-name>UserServlet</servlet-name>-->
+        <!--<servlet-class>com.tw.web.UserServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet>-->
+        <!--<servlet-name>CreateUserServlet</servlet-name>-->
+        <!--<servlet-class>com.tw.web.CreateUserServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet>-->
+        <!--<servlet-name>UpdateUserServlet</servlet-name>-->
+        <!--<servlet-class>com.tw.web.UpdateUserServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet>-->
+        <!--<servlet-name>DeleteServlet</servlet-name>-->
+        <!--<servlet-class>com.tw.web.DeleteUserServlet</servlet-class>-->
+    <!--</servlet>-->
 
-    <servlet-mapping>
-        <servlet-name>DeleteServlet</servlet-name>
-        <url-pattern>/views/delete</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateUserServlet</servlet-name>
-        <url-pattern>/views/update</url-pattern>
-    </servlet-mapping>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>HelloServlet</servlet-name>-->
+        <!--<url-pattern>/</url-pattern>-->
+    <!--</servlet-mapping>-->
 
-    <servlet-mapping>
-        <servlet-name>UserServlet</servlet-name>
-        <url-pattern>/views/user</url-pattern>
-    </servlet-mapping>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>CreateUserServlet</servlet-name>-->
+        <!--<url-pattern>/views/create</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>DeleteServlet</servlet-name>-->
+        <!--<url-pattern>/views/delete</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>UpdateUserServlet</servlet-name>-->
+        <!--<url-pattern>/views/update</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>UserServlet</servlet-name>-->
+        <!--<url-pattern>/views/user</url-pattern>-->
+    <!--</servlet-mapping>-->
 </web-app>
