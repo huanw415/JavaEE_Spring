@@ -1,0 +1,11 @@
+.idea/
+.gradle/
+gradlew
+gradle
+build/
+out/
+*.bat
+*.iml
+*.ipr
+*.iws
+.DS_Store
