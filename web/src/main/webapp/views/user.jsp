@@ -44,7 +44,7 @@
     %>
   </table>
 
-  <a type="button" href="./createUser.jsp">添加新用户</a>
+  <a type="button" href="./createUser">添加新用户</a>
 
 </body>
 </html>
