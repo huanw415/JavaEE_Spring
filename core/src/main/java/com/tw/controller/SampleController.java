@@ -1,18 +1,22 @@
 package com.tw.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by hgwang on 7/9/15.
  */
-@Controller
+@RestController
+@RequestMapping("/")
 public class SampleController {
 
-    @RequestMapping("home")
-    public ModelAndView loadHomePage() {
-
-        return new ModelAndView("home");
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public @ResponseBody
+    String showHomePage(Model m) {
+        m.addAttribute("name", "Hello");
+        return "hello";
     }
 }
