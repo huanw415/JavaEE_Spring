@@ -26,6 +26,16 @@ public class User {
     @Column(name="Age")
     private int age;
 
+    public User() {
+    }
+
+    public User(String name, String gender, String email, int age) {
+        this.name = name;
+        this.gender = gender;
+        this.email = email;
+        this.age = age;
+    }
+
     public int getId() {
         return id;
     }

@@ -52,17 +52,10 @@ public class UserController {
                                    @RequestParam String gender,
                                    @RequestParam String email,
                                    @RequestParam int age){
-        User user = new User();
-        user.setName(name);
-        user.setGender(gender);
-        user.setEmail(email);
-        user.setAge(age);
+
+        User user = new User(name, gender, email, age);
 
         userService.createUser(user);
-
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("user");
-//        modelAndView.addObject("users", userService.getAllUsers());
 
         return new ModelAndView("redirect:/user");
     }
