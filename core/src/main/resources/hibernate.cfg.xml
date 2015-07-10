@@ -12,7 +12,6 @@
         <property name="hibernate.connection.pool_size">10</property>
         <property name="show_sql">true</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
             <mapping class="com.tw.entity.User"/>
     </session-factory>
 </hibernate-configuration>
