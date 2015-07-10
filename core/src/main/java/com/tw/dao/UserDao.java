@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class UserDao {
 
-    public User getUserByName(int id){
+    public User getUserById(int id){
 
 
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -39,12 +39,12 @@ public class UserDao {
     public void createUser(User user){
         Session session = HibernateUtil.getSessionFactory().openSession();
 
-        //创建事物对象
+        //创建事务对象
         session.beginTransaction();
 
         session.save(user);
 
-        //送出事物对象
+        //提交事务对象
         session.getTransaction().commit();
         session.close();
     }
