@@ -11,7 +11,7 @@
     <title></title>
 </head>
 <body>
-  <form name="new_user" method="POST" action="create">
+  <form name="new_user" method="POST" action="">
     <p>姓名：
       <input type="text" name="name"></p>
     <p>性别:

@@ -36,7 +36,7 @@
           <a href="/web/views/update?id=<%= users.get(i).getId()%>">修改</a>
       </td>
       <td>
-          <a href="/web/views/delete?id=<%= users.get(i).getId()%>">删除</a>
+          <a href="/web/delete?id=<%= users.get(i).getId()%>">删除</a>
       </td>
     </tr>
     <%
@@ -44,7 +44,7 @@
     %>
   </table>
 
-  <a type="button" href="./createUser">添加新用户</a>
+  <a type="button" href="./userCreation">添加新用户</a>
 
 </body>
 </html>
