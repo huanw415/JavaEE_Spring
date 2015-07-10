@@ -36,6 +36,14 @@ public class User {
         this.age = age;
     }
 
+    public User(int id, String name, String gender, String email, int age) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.email = email;
+        this.age = age;
+    }
+
     public int getId() {
         return id;
     }

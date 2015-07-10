@@ -12,7 +12,7 @@
     <title></title>
 </head>
 <body>
-  <form name="new_user" method="POST" action="update">
+  <form name="new_user" method="POST" action="">
     <p>姓名：
       <input type="text" name="name" value="<%= ((User)request.getAttribute("user")).getName()%>"> </p>
     <p>性别:

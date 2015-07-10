@@ -33,7 +33,7 @@
       <td><%= users.get(i).getEmail()%></td>
       <td><%= users.get(i).getAge()%></td>
       <td>
-          <a href="/web/views/update?id=<%= users.get(i).getId()%>">修改</a>
+          <a href="./userUpdate?id=<%= users.get(i).getId()%>">修改</a>
       </td>
       <td>
           <a href="./userDelete?id=<%= users.get(i).getId()%>">删除</a>

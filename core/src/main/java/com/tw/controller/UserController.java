@@ -68,5 +68,27 @@ public class UserController {
 
         return new ModelAndView("redirect:/user");
     }
-    
+
+    @RequestMapping(value = "/userUpdate", method = RequestMethod.GET)
+    public ModelAndView getUpdateUserAge(@RequestParam int id){
+        User user = userService.getUserById(id);
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("updateUser");
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/userUpdate", method = RequestMethod.POST)
+    public ModelAndView UpdateUser(@RequestParam String name,@RequestParam int id,
+                                @RequestParam String gender,
+                                @RequestParam String email,
+                                @RequestParam int age){
+        User user = new User(id, name, gender, email, age);
+        userService.updateUser(user);
+
+        return new ModelAndView("redirect:/user");
+    }
+
 }
