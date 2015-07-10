@@ -60,10 +60,10 @@ public class UserController {
 
         userService.createUser(user);
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("user");
-        modelAndView.addObject("users", userService.getAllUsers());
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("user");
+//        modelAndView.addObject("users", userService.getAllUsers());
 
-        return modelAndView;
+        return new ModelAndView("redirect:/user");
     }
 }
