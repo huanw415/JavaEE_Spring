@@ -59,4 +59,14 @@ public class UserController {
 
         return new ModelAndView("redirect:/user");
     }
+
+    @RequestMapping(value = "/userDelete", method = RequestMethod.GET)
+    public ModelAndView deleteUser(@RequestParam int id){
+
+        User user = userService.getUserById(id);
+        userService.deleteUser(user);
+
+        return new ModelAndView("redirect:/user");
+    }
+    
 }

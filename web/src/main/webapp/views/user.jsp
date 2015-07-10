@@ -36,7 +36,7 @@
           <a href="/web/views/update?id=<%= users.get(i).getId()%>">修改</a>
       </td>
       <td>
-          <a href="/web/delete?id=<%= users.get(i).getId()%>">删除</a>
+          <a href="./userDelete?id=<%= users.get(i).getId()%>">删除</a>
       </td>
     </tr>
     <%
