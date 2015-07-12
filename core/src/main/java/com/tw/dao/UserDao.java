@@ -12,6 +12,16 @@ import java.util.List;
  */
 public class UserDao {
 
+    public List<User> getUsersByName(String name){
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        String hql = "from User where name=:name";
+        Query query = session.createQuery(hql);
+        query.setString("name", name);
+
+        return query.list();
+    }
+
     public User getUserById(int id){
 
 
