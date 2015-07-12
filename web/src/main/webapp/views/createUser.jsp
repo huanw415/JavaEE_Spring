@@ -17,6 +17,9 @@
     <p>性别:
       <input type="radio" name="gender" value=男> 男
       <input type="radio" name="gender" value=女> 女</p>
+    <p>密码：
+      <input type="password" name="email" size="16"></p>
+
     <p>邮箱：
       <input type="text" name="email" size="16"></p>
 
