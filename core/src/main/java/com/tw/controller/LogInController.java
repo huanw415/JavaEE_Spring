@@ -41,7 +41,6 @@ public class LogInController {
         User currentUser = users.get(0);
         if(users.size() != 0){
             String logInMessage = userService.canLogIn(currentUser, password);
-
             if(logInMessage == "密码正确"){
                 request.getSession().setAttribute("current_user", currentUser);
                 return new ModelAndView("redirect:/user");

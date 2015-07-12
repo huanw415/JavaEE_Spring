@@ -17,6 +17,7 @@ public class LogOutController {
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ModelAndView logout(HttpServletRequest request){
+        System.out.println(request.getSession().getAttribute("current_user") + "=============");
         request.getSession().removeAttribute("current_user");
         return new ModelAndView("redirect:/login");
     }

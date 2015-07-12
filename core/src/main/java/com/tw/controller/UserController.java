@@ -29,30 +29,35 @@ public class UserController {
     public Boolean isLogIn(HttpServletRequest request){
         User user = (User)request.getSession().getAttribute("current_user");
         if(user != null){
-            return false;
-        }else {
             return true;
+        }else {
+            return false;
         }
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public ModelAndView getAllUsers(){
+    public ModelAndView getAllUsers(HttpServletRequest request){
 
-        ModelAndView modelAndView = new ModelAndView();
+        if(isLogIn(request)){
+            ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.setViewName("user");
-        modelAndView.addObject("users", userService.getAllUsers());
+            modelAndView.setViewName("user");
+            modelAndView.addObject("users", userService.getAllUsers());
 
-        return modelAndView;
+            return modelAndView;
+        }else {
+            return new ModelAndView("redirect:/login");
+        }
     }
 
     @RequestMapping(value = "/userCreation", method = RequestMethod.GET)
-    public ModelAndView getCreateUserPage(){
+    public ModelAndView getCreateUserPage(HttpServletRequest request){
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("createUser");
-
-        return modelAndView;
+        if(isLogIn(request)){
+            return new ModelAndView("createUser");
+        }else {
+            return new ModelAndView("redirect:/login");
+        }
     }
 
     @RequestMapping(value = "/userCreation", method = RequestMethod.POST)
@@ -63,7 +68,6 @@ public class UserController {
                                    @RequestParam String password){
 
         User user = new User(name, gender, email, age, password);
-
         userService.createUser(user);
 
         return new ModelAndView("redirect:/user");
@@ -79,14 +83,19 @@ public class UserController {
     }
 
     @RequestMapping(value = "/userUpdate", method = RequestMethod.GET)
-    public ModelAndView getUpdateUserAge(@RequestParam int id){
-        User user = userService.getUserById(id);
+    public ModelAndView getUpdateUserAge(HttpServletRequest request, @RequestParam int id){
 
-        ModelAndView modelAndView = new ModelAndView();
+        if(isLogIn(request)){
+            User user = userService.getUserById(id);
 
-        modelAndView.setViewName("updateUser");
-        modelAndView.addObject("user", user);
-        return modelAndView;
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.setViewName("updateUser");
+            modelAndView.addObject("user", user);
+
+            return modelAndView;
+        }else {
+            return new ModelAndView("redirect:/login");
+        }
     }
 
     @RequestMapping(value = "/userUpdate", method = RequestMethod.POST)
