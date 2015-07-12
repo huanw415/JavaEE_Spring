@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @RestController
 @RequestMapping("/")
-
 public class UserController {
 
     private UserService userService;
@@ -51,9 +50,10 @@ public class UserController {
     public ModelAndView createUser(@RequestParam String name,
                                    @RequestParam String gender,
                                    @RequestParam String email,
-                                   @RequestParam int age){
+                                   @RequestParam int age,
+                                   @RequestParam String password){
 
-        User user = new User(name, gender, email, age);
+        User user = new User(name, gender, email, age, password);
 
         userService.createUser(user);
 
@@ -84,8 +84,9 @@ public class UserController {
     public ModelAndView UpdateUser(@RequestParam String name,@RequestParam int id,
                                 @RequestParam String gender,
                                 @RequestParam String email,
-                                @RequestParam int age){
-        User user = new User(id, name, gender, email, age);
+                                @RequestParam int age,
+                                @RequestParam String password){
+        User user = new User(id, name, gender, email, age, password);
         userService.updateUser(user);
 
         return new ModelAndView("redirect:/user");
