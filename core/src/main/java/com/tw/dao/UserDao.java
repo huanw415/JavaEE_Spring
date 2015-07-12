@@ -2,8 +2,7 @@ package com.tw.dao;
 
 import com.tw.Util.HibernateUtil;
 import com.tw.entity.User;
-import org.hibernate.Query;
-import org.hibernate.Session;
+import org.hibernate.*;
 
 import java.util.List;
 
