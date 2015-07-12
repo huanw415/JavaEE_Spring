@@ -26,6 +26,9 @@ public class User {
     @Column(name="Age")
     private int age;
 
+    @Column(name="Password")
+    private String password;
+
     public User() {
     }
 
@@ -82,5 +85,13 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
