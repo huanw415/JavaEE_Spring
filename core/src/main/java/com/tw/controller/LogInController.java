@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/")    
 public class LogInController {
     private UserService userService;
 
