@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by hgwang on 7/9/15.
  */
@@ -22,6 +24,15 @@ public class UserController {
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    public Boolean isLogIn(HttpServletRequest request){
+        User user = (User)request.getSession().getAttribute("current_user");
+        if(user != null){
+            return false;
+        }else {
+            return true;
+        }
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
