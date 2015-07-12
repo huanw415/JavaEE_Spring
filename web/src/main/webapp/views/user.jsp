@@ -13,6 +13,7 @@
     <title></title>
 </head>
 <body>
+  <a type="button" href="./logout">退出登录</a>
   <table  border=1 cellpadding=5>
     <tr>
       <th>姓名</th>
