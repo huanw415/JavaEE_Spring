@@ -53,4 +53,9 @@ public class LogInController {
             return new ModelAndView("redirect:/userError");
         }
     }
+
+    @RequestMapping("/userError")
+    public ModelAndView getUserError(){
+        return new ModelAndView("userError");
+    }
 }
