@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
 /**
  * Created by hgwang on 7/9/15.
  */
@@ -81,7 +84,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/userUpdate", method = RequestMethod.POST)
-    public ModelAndView UpdateUser(@RequestParam String name,@RequestParam int id,
+    public ModelAndView UpdateUser(@RequestParam String name,
+                                @RequestParam int id,
                                 @RequestParam String gender,
                                 @RequestParam String email,
                                 @RequestParam int age,
@@ -92,4 +96,31 @@ public class UserController {
         return new ModelAndView("redirect:/user");
     }
 
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    public ModelAndView getLoginPage(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("logIn");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public ModelAndView getLogInMessage(HttpServletRequest request,@RequestParam String name,
+                                        @RequestParam String password){
+
+        List<User> users = userService.getUsersByName(name);
+        User currentUser = users.get(0);
+        if(users.size() != 0){
+            String logInMessage = userService.canLogIn(currentUser, password);
+            if(logInMessage == "密码正确"){
+                request.getSession().setAttribute("current_user", currentUser);
+                return new ModelAndView("redirect:/user");
+            }else {
+                return new ModelAndView("redirect:/userError");
+            }
+
+        }else {
+            return new ModelAndView("redirect:/userError");
+        }
+    }
 }
