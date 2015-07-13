@@ -3,12 +3,14 @@ package com.tw.dao;
 import com.tw.Util.HibernateUtil;
 import com.tw.entity.User;
 import org.hibernate.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by hgwang on 7/7/15.
  */
+@Repository
 public class UserDao {
 
     public List<User> getUsersByName(String name) {

@@ -2,6 +2,7 @@ package com.tw.service;
 
 import com.tw.dao.UserDao;
 import com.tw.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,11 +10,8 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private UserDao userDao = new UserDao();
-
-    public String service() {
-        return "Hello World";
-    }
+    @Autowired
+    private UserDao userDao;
 
     public List<User> getAllUsers() {
 
