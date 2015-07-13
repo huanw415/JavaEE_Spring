@@ -36,7 +36,7 @@ public class LogInController {
 
         return modelAndView;
     }
-    
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView getLogInMessage(HttpServletRequest request, @RequestParam String name,
                                         @RequestParam String password, HttpServletResponse response) {

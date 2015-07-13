@@ -7,26 +7,26 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
 
     @Id
-    @Column(name="Id")
+    @Column(name = "Id")
     private int id;
 
-    @Column(name="Name")
+    @Column(name = "Name")
     private String name;
 
-    @Column(name="Gender")
+    @Column(name = "Gender")
     private String gender;
 
-    @Column(name="Email")
+    @Column(name = "Email")
     private String email;
 
-    @Column(name="Age")
+    @Column(name = "Age")
     private int age;
 
-    @Column(name="Password")
+    @Column(name = "Password")
     private String password;
 
     public User() {

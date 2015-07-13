@@ -15,34 +15,35 @@ public class UserService {
         return "Hello World";
     }
 
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
 
         return userDao.getAllUsers();
     }
-    public void createUser(User user){
-         userDao.createUser(user);
-     }
 
-    public User getUserById(int id){
+    public void createUser(User user) {
+        userDao.createUser(user);
+    }
+
+    public User getUserById(int id) {
         return userDao.getUserById(id);
     }
 
-    public void deleteUser(User user){
+    public void deleteUser(User user) {
         userDao.deleteUser(user);
     }
 
-    public void updateUser(User user){
+    public void updateUser(User user) {
         userDao.updateUser(user);
     }
 
-    public List<User> getUsersByName(String name){
+    public List<User> getUsersByName(String name) {
         return userDao.getUsersByName(name);
     }
 
-    public String canLogIn(User user, String password){
-        if(user.getPassword().equals(password)){
+    public String canLogIn(User user, String password) {
+        if (user.getPassword().equals(password)) {
             return "密码正确";
-        }else {
+        } else {
             return "密码错误";
         }
     }

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class UserDao {
 
-    public List<User> getUsersByName(String name){
+    public List<User> getUsersByName(String name) {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         String hql = "from User where name=:name";
@@ -21,19 +21,19 @@ public class UserDao {
         return query.list();
     }
 
-    public User getUserById(int id){
+    public User getUserById(int id) {
 
 
         Session session = HibernateUtil.getSessionFactory().openSession();
 
-        String hql="from User where id=:id";
+        String hql = "from User where id=:id";
         Query query = session.createQuery(hql);
         query.setInteger("id", id);
 
         return (User) query.list().get(0);
     }
 
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
 
         List<User> users;
 
@@ -45,7 +45,7 @@ public class UserDao {
         return users;
     }
 
-    public void createUser(User user){
+    public void createUser(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         //创建事务对象
@@ -58,7 +58,7 @@ public class UserDao {
         session.close();
     }
 
-    public void deleteUser(User user){
+    public void deleteUser(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         session.beginTransaction();
@@ -69,7 +69,7 @@ public class UserDao {
         session.close();
     }
 
-    public void updateUser(User user){
+    public void updateUser(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         session.beginTransaction();
