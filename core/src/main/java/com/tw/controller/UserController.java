@@ -1,9 +1,9 @@
 package com.tw.controller;
 
+import com.tw.Util.Md5Util;
 import com.tw.entity.User;
 import com.tw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -63,11 +63,11 @@ public class UserController {
     @RequestMapping(value = "/userCreation", method = RequestMethod.POST)
     public ModelAndView createUser(@RequestParam String name,
                                    @RequestParam String gender,
+                                   @RequestParam String password,
                                    @RequestParam String email,
-                                   @RequestParam int age,
-                                   @RequestParam String password){
+                                   @RequestParam int age){
 
-        User user = new User(name, gender, email, age, password);
+        User user = new User(name, gender, email, age, Md5Util.md5(password));
         userService.createUser(user);
 
         return new ModelAndView("redirect:/user");
@@ -105,7 +105,7 @@ public class UserController {
                                 @RequestParam String email,
                                 @RequestParam int age,
                                 @RequestParam String password){
-        User user = new User(id, name, gender, email, age, password);
+        User user = new User(id, name, gender, email, age, Md5Util.md5(password));
         userService.updateUser(user);
 
         return new ModelAndView("redirect:/user");

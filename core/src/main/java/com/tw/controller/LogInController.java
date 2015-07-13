@@ -1,5 +1,6 @@
 package com.tw.controller;
 
+import com.tw.Util.Md5Util;
 import com.tw.entity.User;
 import com.tw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,9 @@ public class LogInController {
 
         List<User> users = userService.getUsersByName(name);
 
-        User currentUser = users.get(0);
         if(users.size() != 0){
-            String logInMessage = userService.canLogIn(currentUser, password);
+            User currentUser = users.get(0);
+            String logInMessage = userService.canLogIn(currentUser, Md5Util.md5(password));
             if(logInMessage == "密码正确"){
                 request.getSession().setAttribute("current_user", currentUser);
                 return new ModelAndView("redirect:/user");
