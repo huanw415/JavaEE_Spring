@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by hgwang on 7/9/15.
@@ -66,7 +67,7 @@ public class UserController {
                                    @RequestParam String gender,
                                    @RequestParam String password,
                                    @RequestParam String email,
-                                   @RequestParam int age) {
+                                   @RequestParam int age) throws NoSuchAlgorithmException {
 
         User user = new User(name, gender, email, age, Md5Util.md5(password));
         userService.createUser(user);
@@ -105,7 +106,7 @@ public class UserController {
                                    @RequestParam String gender,
                                    @RequestParam String email,
                                    @RequestParam int age,
-                                   @RequestParam String password) {
+                                   @RequestParam String password) throws NoSuchAlgorithmException {
         User user = new User(id, name, gender, email, age, Md5Util.md5(password));
         userService.updateUser(user);
 

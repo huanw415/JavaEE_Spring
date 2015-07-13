@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -39,7 +40,7 @@ public class LogInController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView getLogInMessage(HttpServletRequest request, @RequestParam String name,
-                                        @RequestParam String password, HttpServletResponse response) {
+                                        @RequestParam String password, HttpServletResponse response) throws NoSuchAlgorithmException {
 
         List<User> users = userService.getUsersByName(name);
 
