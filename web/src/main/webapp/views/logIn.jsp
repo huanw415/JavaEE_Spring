@@ -16,7 +16,7 @@
       <input name="name" type="text">
     </p>
     <p> 密&nbsp;&nbsp;&nbsp;&nbsp;码:
-      <input name="password" type="text">
+      <input name="password" type="password">
     </p>
     <input type="submit" value=" 提交">
     <input type="reset" value="重填">
