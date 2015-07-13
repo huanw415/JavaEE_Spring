@@ -18,10 +18,10 @@ public class LogOutController {
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ModelAndView logout(HttpServletResponse reponse){
-//        request.getSession().removeAttribute("current_user");
         Cookie cookie = new Cookie("current_user", null);
         cookie.setMaxAge(0);
         reponse.addCookie(cookie);
+        
         return new ModelAndView("redirect:/login");
     }
 }
