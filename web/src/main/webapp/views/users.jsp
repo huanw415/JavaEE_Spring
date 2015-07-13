@@ -40,8 +40,6 @@
       </td>
       <td>
         <a href="./users/userDeletion/<%= users.get(i).getId()%>">删除</a>
-
-      <%--<a href="./userDeletion?id=<%= users.get(i).getId()%>">删除</a>--%>
       </td>
     </tr>
     <%
