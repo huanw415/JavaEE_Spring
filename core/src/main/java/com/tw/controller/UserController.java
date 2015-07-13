@@ -77,7 +77,7 @@ public class UserController {
         return new ModelAndView("redirect:/users");
     }
 
-    @RequestMapping(value = "/userDelete", method = RequestMethod.GET)
+    @RequestMapping(value = "/userDeletion", method = RequestMethod.GET)
     public ModelAndView deleteUser(@RequestParam int id){
 
         User user = userService.getUserById(id);
