@@ -4,9 +4,13 @@ import com.tw.Util.Md5Util;
 import com.tw.entity.User;
 import com.tw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -26,9 +30,17 @@ public class UserController {
         this.userService = userService;
     }
 
+//    public Boolean isLogIn(HttpServletRequest request){
+//        User user = (User)request.getSession().getAttribute("current_user");
+//        if(user != null){
+//            return true;
+//        }else {
+//            return false;
+//        }
+//    }
     public Boolean isLogIn(HttpServletRequest request){
-        User user = (User)request.getSession().getAttribute("current_user");
-        if(user != null){
+        Cookie[] cookies = request.getCookies();
+        if(cookies != null){
             return true;
         }else {
             return false;
