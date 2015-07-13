@@ -51,7 +51,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/userCreation", method = RequestMethod.GET)
+    @RequestMapping(value = "/creation", method = RequestMethod.GET)
     public ModelAndView getCreateUserPage(HttpServletRequest request){
 
         if(isLogIn(request)){
@@ -61,7 +61,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/userCreation", method = RequestMethod.POST)
+    @RequestMapping(value = "/creation", method = RequestMethod.POST)
     public ModelAndView createUser(@RequestParam String name,
                                    @RequestParam String gender,
                                    @RequestParam String password,
@@ -74,7 +74,7 @@ public class UserController {
         return new ModelAndView("redirect:/users");
     }
 
-    @RequestMapping(value = "/userDeletion/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/deletion/{id}", method = RequestMethod.GET)
     public ModelAndView deleteUser(@PathVariable int id){
 
         User user = userService.getUserById(id);
@@ -83,7 +83,7 @@ public class UserController {
         return new ModelAndView("redirect:/users");
     }
 
-    @RequestMapping(value = "/userUpdate/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public ModelAndView getUpdateUserAge(HttpServletRequest request, @PathVariable int id){
 
         if(isLogIn(request)){
@@ -99,7 +99,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/userUpdate/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public ModelAndView UpdateUser(@RequestParam String name,
                                 @PathVariable int id,
                                 @RequestParam String gender,
