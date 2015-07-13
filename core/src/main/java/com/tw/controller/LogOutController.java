@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LogOutController {
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public ModelAndView logout(HttpServletResponse reponse){
+    public ModelAndView logout(HttpServletResponse reponse) {
         Cookie cookie = new Cookie("current_user", null);
         cookie.setMaxAge(0);
         reponse.addCookie(cookie);

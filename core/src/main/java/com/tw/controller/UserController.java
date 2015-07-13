@@ -27,36 +27,36 @@ public class UserController {
         this.userService = userService;
     }
 
-    public Boolean isLogIn(HttpServletRequest request){
+    public Boolean isLogIn(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
-        if(cookies.length > 1){
+        if (cookies.length > 1) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getAllUsers(HttpServletRequest request){
+    public ModelAndView getAllUsers(HttpServletRequest request) {
 
-        if(isLogIn(request)){
+        if (isLogIn(request)) {
             ModelAndView modelAndView = new ModelAndView();
 
             modelAndView.setViewName("users");
             modelAndView.addObject("users", userService.getAllUsers());
 
             return modelAndView;
-        }else {
+        } else {
             return new ModelAndView("redirect:/login");
         }
     }
 
     @RequestMapping(value = "/creation", method = RequestMethod.GET)
-    public ModelAndView getCreateUserPage(HttpServletRequest request){
+    public ModelAndView getCreateUserPage(HttpServletRequest request) {
 
-        if(isLogIn(request)){
+        if (isLogIn(request)) {
             return new ModelAndView("createUser");
-        }else {
+        } else {
             return new ModelAndView("redirect:/login");
         }
     }
@@ -66,7 +66,7 @@ public class UserController {
                                    @RequestParam String gender,
                                    @RequestParam String password,
                                    @RequestParam String email,
-                                   @RequestParam int age){
+                                   @RequestParam int age) {
 
         User user = new User(name, gender, email, age, Md5Util.md5(password));
         userService.createUser(user);
@@ -75,7 +75,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/deletion/{id}", method = RequestMethod.GET)
-    public ModelAndView deleteUser(@PathVariable int id){
+    public ModelAndView deleteUser(@PathVariable int id) {
 
         User user = userService.getUserById(id);
         userService.deleteUser(user);
@@ -84,9 +84,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public ModelAndView getUpdateUserAge(HttpServletRequest request, @PathVariable int id){
+    public ModelAndView getUpdateUserAge(HttpServletRequest request, @PathVariable int id) {
 
-        if(isLogIn(request)){
+        if (isLogIn(request)) {
             User user = userService.getUserById(id);
 
             ModelAndView modelAndView = new ModelAndView();
@@ -94,18 +94,18 @@ public class UserController {
             modelAndView.addObject("user", user);
 
             return modelAndView;
-        }else {
+        } else {
             return new ModelAndView("redirect:/login");
         }
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public ModelAndView UpdateUser(@RequestParam String name,
-                                @PathVariable int id,
-                                @RequestParam String gender,
-                                @RequestParam String email,
-                                @RequestParam int age,
-                                @RequestParam String password){
+    public ModelAndView UpdateUser(@PathVariable int id,
+                                   @RequestParam String name,
+                                   @RequestParam String gender,
+                                   @RequestParam String email,
+                                   @RequestParam int age,
+                                   @RequestParam String password) {
         User user = new User(id, name, gender, email, age, Md5Util.md5(password));
         userService.updateUser(user);
 

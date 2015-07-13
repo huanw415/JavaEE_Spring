@@ -29,15 +29,15 @@ public class LogInController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public ModelAndView getLoginPage(){
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView getLoginPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("logIn");
 
         return modelAndView;
     }
 
-//    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    //    @RequestMapping(value = "/login",method = RequestMethod.POST)
 //    public ModelAndView getLogInMessage(HttpServletRequest request,@RequestParam String name,
 //                                        @RequestParam String password, HttpServletResponse response){
 //
@@ -59,29 +59,30 @@ public class LogInController {
 //            return new ModelAndView("redirect:/userError");
 //        }
 //    }
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public ModelAndView getLogInMessage(HttpServletRequest request,@RequestParam String name,
-                                        @RequestParam String password, HttpServletResponse response){
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView getLogInMessage(HttpServletRequest request, @RequestParam String name,
+                                        @RequestParam String password, HttpServletResponse response) {
 
         List<User> users = userService.getUsersByName(name);
 
-        if(users.size() != 0){
+        if (users.size() != 0) {
             User currentUser = users.get(0);
             String logInMessage = userService.canLogIn(currentUser, Md5Util.md5(password));
-            if(logInMessage == "密码正确"){
+            if (logInMessage == "密码正确") {
                 Cookie cookie = new Cookie("current_user", currentUser.getName());
                 response.addCookie(cookie);
                 return new ModelAndView("redirect:/users");
-            }else {
+            } else {
                 return new ModelAndView("redirect:/userError");
             }
 
-        }else {
+        } else {
             return new ModelAndView("redirect:/userError");
         }
     }
+
     @RequestMapping("/userError")
-    public ModelAndView getUserError(){
+    public ModelAndView getUserError() {
         return new ModelAndView("userError");
     }
 }
