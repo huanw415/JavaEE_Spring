@@ -40,7 +40,7 @@ public class UserController {
 //    }
     public Boolean isLogIn(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
-        if(cookies != null){
+        if(cookies.length > 1){
             return true;
         }else {
             return false;
