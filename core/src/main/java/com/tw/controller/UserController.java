@@ -30,14 +30,6 @@ public class UserController {
         this.userService = userService;
     }
 
-//    public Boolean isLogIn(HttpServletRequest request){
-//        User user = (User)request.getSession().getAttribute("current_user");
-//        if(user != null){
-//            return true;
-//        }else {
-//            return false;
-//        }
-//    }
     public Boolean isLogIn(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
         if(cookies.length > 1){

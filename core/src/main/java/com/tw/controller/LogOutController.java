@@ -21,7 +21,7 @@ public class LogOutController {
         Cookie cookie = new Cookie("current_user", null);
         cookie.setMaxAge(0);
         reponse.addCookie(cookie);
-        
+
         return new ModelAndView("redirect:/login");
     }
 }
