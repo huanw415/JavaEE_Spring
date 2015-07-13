@@ -4,10 +4,7 @@ import com.tw.Util.Md5Util;
 import com.tw.entity.User;
 import com.tw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
@@ -17,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by hgwang on 7/9/15.
  */
 @RestController
-@RequestMapping("/")
+@RequestMapping("/users")
 public class UserController {
 
     private UserService userService;
@@ -39,7 +36,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getAllUsers(HttpServletRequest request){
 
         if(isLogIn(request)){
@@ -77,8 +74,8 @@ public class UserController {
         return new ModelAndView("redirect:/users");
     }
 
-    @RequestMapping(value = "/userDeletion", method = RequestMethod.GET)
-    public ModelAndView deleteUser(@RequestParam int id){
+    @RequestMapping(value = "/userDeletion/{id}", method = RequestMethod.GET)
+    public ModelAndView deleteUser(@PathVariable int id){
 
         User user = userService.getUserById(id);
         userService.deleteUser(user);
@@ -86,8 +83,8 @@ public class UserController {
         return new ModelAndView("redirect:/users");
     }
 
-    @RequestMapping(value = "/userUpdate", method = RequestMethod.GET)
-    public ModelAndView getUpdateUserAge(HttpServletRequest request, @RequestParam int id){
+    @RequestMapping(value = "/userUpdate/{id}", method = RequestMethod.GET)
+    public ModelAndView getUpdateUserAge(HttpServletRequest request, @PathVariable int id){
 
         if(isLogIn(request)){
             User user = userService.getUserById(id);
@@ -102,9 +99,9 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/userUpdate", method = RequestMethod.POST)
+    @RequestMapping(value = "/userUpdate/{id}", method = RequestMethod.POST)
     public ModelAndView UpdateUser(@RequestParam String name,
-                                @RequestParam int id,
+                                @PathVariable int id,
                                 @RequestParam String gender,
                                 @RequestParam String email,
                                 @RequestParam int age,

@@ -36,10 +36,12 @@
       <td><%= users.get(i).getEmail()%></td>
       <td><%= users.get(i).getAge()%></td>
       <td>
-          <a href="./userUpdate?id=<%= users.get(i).getId()%>">修改</a>
+          <a href="./users/userUpdate/<%= users.get(i).getId()%>">修改</a>
       </td>
       <td>
-          <a href="./userDeletion?id=<%= users.get(i).getId()%>">删除</a>
+        <a href="./users/userDeletion/<%= users.get(i).getId()%>">删除</a>
+
+      <%--<a href="./userDeletion?id=<%= users.get(i).getId()%>">删除</a>--%>
       </td>
     </tr>
     <%
@@ -47,7 +49,7 @@
     %>
   </table>
 
-  <a type="button" href="./userCreation">添加新用户</a>
+  <a type="button" href="./users/userCreation">添加新用户</a>
 
 </body>
 </html>
