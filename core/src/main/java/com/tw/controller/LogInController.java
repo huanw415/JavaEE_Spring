@@ -36,29 +36,7 @@ public class LogInController {
 
         return modelAndView;
     }
-
-    //    @RequestMapping(value = "/login",method = RequestMethod.POST)
-//    public ModelAndView getLogInMessage(HttpServletRequest request,@RequestParam String name,
-//                                        @RequestParam String password, HttpServletResponse response){
-//
-//        List<User> users = userService.getUsersByName(name);
-//
-//        if(users.size() != 0){
-//            User currentUser = users.get(0);
-//            String logInMessage = userService.canLogIn(currentUser, Md5Util.md5(password));
-//            if(logInMessage == "密码正确"){
-//                Cookie cookie = new Cookie("current_user", currentUser.getName());
-//                response.addCookie(cookie);
-//                request.getSession().setAttribute("current_user", currentUser);
-//                return new ModelAndView("redirect:/user");
-//            }else {
-//                return new ModelAndView("redirect:/userError");
-//            }
-//
-//        }else {
-//            return new ModelAndView("redirect:/userError");
-//        }
-//    }
+    
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView getLogInMessage(HttpServletRequest request, @RequestParam String name,
                                         @RequestParam String password, HttpServletResponse response) {
