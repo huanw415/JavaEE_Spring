@@ -71,7 +71,7 @@ public class LogInController {
             if(logInMessage == "密码正确"){
                 Cookie cookie = new Cookie("current_user", currentUser.getName());
                 response.addCookie(cookie);
-                return new ModelAndView("redirect:/user");
+                return new ModelAndView("redirect:/users");
             }else {
                 return new ModelAndView("redirect:/userError");
             }

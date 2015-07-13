@@ -39,13 +39,13 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ModelAndView getAllUsers(HttpServletRequest request){
 
         if(isLogIn(request)){
             ModelAndView modelAndView = new ModelAndView();
 
-            modelAndView.setViewName("user");
+            modelAndView.setViewName("users");
             modelAndView.addObject("users", userService.getAllUsers());
 
             return modelAndView;
@@ -74,7 +74,7 @@ public class UserController {
         User user = new User(name, gender, email, age, Md5Util.md5(password));
         userService.createUser(user);
 
-        return new ModelAndView("redirect:/user");
+        return new ModelAndView("redirect:/users");
     }
 
     @RequestMapping(value = "/userDelete", method = RequestMethod.GET)
@@ -83,7 +83,7 @@ public class UserController {
         User user = userService.getUserById(id);
         userService.deleteUser(user);
 
-        return new ModelAndView("redirect:/user");
+        return new ModelAndView("redirect:/users");
     }
 
     @RequestMapping(value = "/userUpdate", method = RequestMethod.GET)
@@ -112,6 +112,6 @@ public class UserController {
         User user = new User(id, name, gender, email, age, Md5Util.md5(password));
         userService.updateUser(user);
 
-        return new ModelAndView("redirect:/user");
+        return new ModelAndView("redirect:/users");
     }
 }
