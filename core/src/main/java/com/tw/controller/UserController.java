@@ -22,6 +22,16 @@ public class UserController {
     public UserController() {
     }
 
+    private ModelAndView createModelAndView(String viewName, String objectName, Object objectValue){
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName(viewName);
+        modelAndView.addObject(objectName, objectValue);
+
+        return modelAndView;
+    }
+
     private Cookie deletePreviousPageCookie(){
         Cookie pageCookie = new Cookie("previous_page", null);
         pageCookie.setMaxAge(0);
@@ -57,12 +67,7 @@ public class UserController {
 
         if (isLogIn(request)) {
 
-            ModelAndView modelAndView = new ModelAndView();
-
-            modelAndView.setViewName("users");
-            modelAndView.addObject("users", userService.getAllUsers());
-
-            return modelAndView;
+            return createModelAndView("users", "users", userService.getAllUsers());
         } else {
 
             response.addCookie(deletePreviousPageCookie());
@@ -116,11 +121,7 @@ public class UserController {
 
             User user = userService.getUserById(id);
 
-            ModelAndView modelAndView = new ModelAndView();
-            modelAndView.setViewName("updateUser");
-            modelAndView.addObject("user", user);
-
-            return modelAndView;
+            return createModelAndView("updateUser", "user", user);
         } else {
 
             response.addCookie(deletePreviousPageCookie());
