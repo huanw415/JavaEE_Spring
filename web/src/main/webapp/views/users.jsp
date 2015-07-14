@@ -20,9 +20,9 @@
 </head>
 <body>
   <div class="container">
-
-    <a type="button" href="./logout">退出登录</a>
-
+    <div>
+      <a type="button" href="./logout">退出登录</a>
+    </div>
     <table class="table table-bordered">
       <caption><h2>用户信息表</h2></caption>
       <tr>
@@ -57,7 +57,9 @@
       %>
     </table>
 
-    <a type="button" href="./users/creation">添加新用户</a>
+    <div>
+      <a type="button" href="./users/creation">添加新用户</a>
+    </div>
 
   </div>
 </body>
