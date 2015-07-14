@@ -9,25 +9,76 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+  <title>修改用户信息</title>
+
+  <link href="../../lib/css/bootstrap.css" rel="stylesheet"/>
+
+  <script src="../../lib/js/jquery-1.11.1.min.js"></script>
+  <script src="../../lib/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-  <form name="new_user" method="POST" action="">
-    <p>姓名：
-      <input type="text" name="name" value="<%= ((User)request.getAttribute("user")).getName()%>"> </p>
-    <p>性别:
-      <input type="radio" name="gender" value=男> 男
-      <input type="radio" name="gender" value=女> 女</p>
-    <p>密码：
-      <input type="password" name="password" size="16" value="<%= ((User) request.getAttribute("user")).getPassword()%>"></p>
+  <div class="container">
+    <form name="new_user" method="POST" action="">
+      <div class="row">
+        <div class="col-md-offset-4 col-lg-4">
+          <div class="form-group">
+            <label for="name">姓名</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="姓名" value="<%= ((User)request.getAttribute("user")).getName()%>">
+          </div>
+        </div>
+      </div>
 
-    <p>邮箱：
-      <input type="text" name="email" size="16" value="<%= ((User)request.getAttribute("user")).getEmail()%>"></p>
+      <div class="row">
+        <div class="col-md-offset-4 col-lg-4">
+          <div class="from-group">
+            <label>性别</label>
+            <label for="male">
+              <input type="radio" id="male" name="gender" value=男> 男
+            </label>
+            <label for="female">
+              <input type="radio" id="female" name="gender" value=女> 女
+            </label>
+          </div>
+        </div>
+      </div>
 
-    <p>年龄：
-      <input type="text" name="age" value="<%= ((User)request.getAttribute("user")).getAge()%>"></p>
-    <input type="submit" value=" 提交">
-    <input type="reset" value="重填"></p>
-  </form>
+      <div class="row">
+        <div class="col-md-offset-4 col-lg-4">
+          <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="密码" value="<%= ((User) request.getAttribute("user")).getPassword()%>">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-offset-4 col-lg-4">
+          <div class="form-group">
+            <label for="email">邮箱</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="邮箱" value="<%= ((User)request.getAttribute("user")).getEmail()%>">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-offset-4 col-lg-4">
+          <div class="form-group">
+            <label for="age">年龄</label>
+            <input type="text" class="form-control" id="age" name="age" placeholder="年龄" value="<%= ((User)request.getAttribute("user")).getAge()%>">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-offset-5">
+          <button type="submit" class="btn btn-default">提交</button>
+          <button type="reset" class="btn btn-default">清空</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
 </body>
 </html>
