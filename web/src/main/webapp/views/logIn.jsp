@@ -28,8 +28,8 @@
             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
           </div>
 
-          <button type="submit" class="btn btn-default">提交</button>
-          <button type="reset" class="btn btn-default">清空</button>
+          <button type="submit" class="btn btn-default">登录</button>
+          <button type="reset" class="btn btn-default">重置</button>
         </div>
       </div>
     </form>
