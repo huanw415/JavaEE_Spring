@@ -18,10 +18,8 @@ import java.security.NoSuchAlgorithmException;
 @RequestMapping("/users")
 public class UserController {
 
+    @Autowired
     private UserService userService;
-
-    public UserController() {
-    }
 
     private ModelAndView createModelAndView(String viewName, String objectName, Object objectValue){
 
@@ -44,11 +42,6 @@ public class UserController {
         cookie.setPath("/");
 
         return cookie;
-    }
-
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
