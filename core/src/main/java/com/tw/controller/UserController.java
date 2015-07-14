@@ -45,12 +45,7 @@ public class UserController {
         return cookie;
     }
 
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
-    public Boolean isLogIn(HttpServletRequest request) {
+    private Boolean isLogIn(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
 
         for(int i=0; i<cookies.length; i++){
@@ -60,6 +55,11 @@ public class UserController {
         }
 
         return false;
+    }
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
