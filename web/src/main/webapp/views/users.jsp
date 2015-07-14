@@ -24,6 +24,7 @@
     <a type="button" href="./logout">退出登录</a>
 
     <table class="table table-bordered">
+      <caption><h2>用户信息表</h2></caption>
       <tr>
         <th>姓名</th>
         <th>性别</th>
