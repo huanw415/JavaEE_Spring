@@ -11,6 +11,8 @@
 <html>
 <head>
     <title></title>
+  <script src="./lib/js/jquery-1.11.1.min.js"></script>
+  <script src="./js/user.js"></script>
 </head>
 <body>
   <a type="button" href="./logout">退出登录</a>
@@ -39,7 +41,7 @@
           <a href="./users/update/<%= users.get(i).getId()%>">修改</a>
       </td>
       <td>
-        <a href="./users/deletion/<%= users.get(i).getId()%>">删除</a>
+        <button id="deleteUser", data-id="<%= users.get(i).getId()%>">删除</button>
       </td>
     </tr>
     <%

@@ -88,13 +88,11 @@ public class UserController {
         return new ModelAndView("redirect:/users");
     }
 
-    @RequestMapping(value = "/deletion/{id}", method = RequestMethod.GET)
-    public ModelAndView deleteUser(@PathVariable int id) {
+    @RequestMapping(value = "/deletion/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable int id) {
 
         User user = userService.getUserById(id);
         userService.deleteUser(user);
-
-        return new ModelAndView("redirect:/users");
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
