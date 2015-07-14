@@ -1,6 +1,6 @@
 $(function(){
 
-    $("#deleteUser").on("click", function(){
+    $(".deleteUser").on("click", function(){
 
         var id = $(this).data('id');
 

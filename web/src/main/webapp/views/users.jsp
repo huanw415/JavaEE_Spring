@@ -49,7 +49,7 @@
           <a href="./users/update/<%= users.get(i).getId()%>">修改</a>
         </td>
         <td>
-          <a type="button", id="deleteUser", data-id="<%= users.get(i).getId()%>">删除</a>
+          <a type="button" class="deleteUser" data-id="<%= users.get(i).getId()%>">删除</a>
         </td>
       </tr>
       <%
