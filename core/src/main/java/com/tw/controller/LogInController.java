@@ -19,15 +19,20 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class LogInController {
-    private UserService userService;
 
     @Autowired
-    public LogInController(UserService userService) {
-        this.userService = userService;
+    private UserService userService;
+
+    private String getPreviousPageUrl(String previousUrl){
+        String previousPageUrl = "users";
+        if(!previousUrl.equals("")){
+            previousPageUrl = previousUrl;
+        }
+        return previousPageUrl;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView getLoginPage(HttpServletRequest request) {
+    public ModelAndView getLoginPage() {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("logIn");
@@ -35,34 +40,23 @@ public class LogInController {
         return modelAndView;
     }
 
-    public String getPreviousPage(HttpServletRequest request){
-        String previousPage = "users";
-        Cookie[] cookies = request.getCookies();
-        for (int i=0; i<cookies.length; i++) {
-            if (cookies[i].getName().equals("previous_page")) {
-                previousPage = cookies[i].getValue();
-            }
-        }
-
-        return previousPage;
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView getLogInMessage(HttpServletRequest request, @RequestParam String name,
-                                        @RequestParam String password, HttpServletResponse response) throws NoSuchAlgorithmException {
+    public ModelAndView getLogInMessage(@CookieValue(value = "previous_page", defaultValue = "") String previousUrl,
+                                        @RequestParam String name,
+                                        @RequestParam String password,
+                                        HttpServletResponse response) throws NoSuchAlgorithmException {
 
         List<User> users = userService.getUsersByName(name);
 
         if (users.size() != 0) {
             User currentUser = users.get(0);
             String logInMessage = userService.canLogIn(currentUser, Md5Util.md5(password));
+
             if (logInMessage == "密码正确") {
                 Cookie cookie = new Cookie("current_user", currentUser.getName());
                 response.addCookie(cookie);
 
-                String previousPage =getPreviousPage(request);
-
-                return new ModelAndView("redirect:/" + previousPage);
+                return new ModelAndView("redirect:/" + getPreviousPageUrl(previousUrl));
             } else {
                 return new ModelAndView("redirect:/userError");
             }
