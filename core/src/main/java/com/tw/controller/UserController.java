@@ -28,6 +28,13 @@ public class UserController {
         return pageCookie;
     }
 
+    private Cookie createPreviousPageCookie(String cookieValue){
+        Cookie cookie = new Cookie("previous_page", cookieValue);
+        cookie.setPath("/");
+
+        return cookie;
+    }
+
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
@@ -57,12 +64,9 @@ public class UserController {
 
             return modelAndView;
         } else {
-            
-            response.addCookie(deletePreviousPageCookie());
 
-            Cookie cookie = new Cookie("previous_page", "users");
-            cookie.setPath("/");
-            response.addCookie(cookie);
+            response.addCookie(deletePreviousPageCookie());
+            response.addCookie(createPreviousPageCookie("users"));
 
             return new ModelAndView("redirect:/login");
         }
@@ -77,10 +81,7 @@ public class UserController {
         } else {
 
             response.addCookie(deletePreviousPageCookie());
-
-            Cookie cookie = new Cookie("previous_page", "users/creation");
-            cookie.setPath("/");
-            response.addCookie(cookie);
+            response.addCookie(createPreviousPageCookie("users/creation"));
 
             return new ModelAndView("redirect:/login");
         }
@@ -123,10 +124,7 @@ public class UserController {
         } else {
 
             response.addCookie(deletePreviousPageCookie());
-
-            Cookie cookie = new Cookie("previous_page", "users/update/"+id);
-            cookie.setPath("/");
-            response.addCookie(cookie);
+            response.addCookie(createPreviousPageCookie("users/update/"+id));
 
             return new ModelAndView("redirect:/login");
         }
