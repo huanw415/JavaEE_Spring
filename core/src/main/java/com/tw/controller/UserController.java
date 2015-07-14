@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.*;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.security.NoSuchAlgorithmException;
 
 /**
@@ -45,27 +46,15 @@ public class UserController {
         return cookie;
     }
 
-    private Boolean isLogIn(HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-
-        for(int i=0; i<cookies.length; i++){
-            if(cookies[i].getName().equals("current_user")){
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getAllUsers(HttpServletRequest request, HttpServletResponse response) {
-
-        if (isLogIn(request)) {
+    public ModelAndView getAllUsers(@CookieValue(value = "current_user", defaultValue = "") String currentUser,
+                                    HttpServletResponse response) {
+        if (!currentUser.equals("")) {
 
             return createModelAndView("users", "users", userService.getAllUsers());
         } else {
@@ -78,9 +67,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/creation", method = RequestMethod.GET)
-    public ModelAndView getCreateUserPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ModelAndView getCreateUserPage(@CookieValue(value = "current_user", defaultValue = "") String currentUser,
+                                          HttpServletResponse response) throws Exception {
 
-        if (isLogIn(request)) {
+        if (!currentUser.equals("")) {
 
             return new ModelAndView("createUser");
         } else {
@@ -115,9 +105,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public ModelAndView getUpdateUserAge(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
+    public ModelAndView getUpdateUserAge(@CookieValue(value = "current_user", defaultValue = "") String currentUser,
+                                         HttpServletResponse response,
+                                         @PathVariable int id) {
 
-        if (isLogIn(request)) {
+        if (!currentUser.equals("")) {
 
             User user = userService.getUserById(id);
 
