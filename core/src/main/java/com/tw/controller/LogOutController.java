@@ -24,7 +24,13 @@ public class LogOutController {
 
         Cookie pageCookie = new Cookie("previous_page", null);
         pageCookie.setMaxAge(0);
+        pageCookie.setPath("/");
         response.addCookie(pageCookie);
+
+        Cookie a = new Cookie("previous_page```````````", null);
+        a.setMaxAge(0);
+        a.setPath("/");
+        response.addCookie(a);
 
         return new ModelAndView("redirect:/login");
     }

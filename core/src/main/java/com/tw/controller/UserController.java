@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.security.NoSuchAlgorithmException;
 
 /**
@@ -30,17 +31,21 @@ public class UserController {
 
     public Boolean isLogIn(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
-        if (cookies.length > 1) {
-            return true;
-        } else {
-            return false;
+
+        for(int i=0; i<cookies.length; i++){
+            if(cookies[i].getName().equals("current_user")){
+                return true;
+            }
         }
+
+        return false;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getAllUsers(HttpServletRequest request) {
+    public ModelAndView getAllUsers(HttpServletRequest request, HttpServletResponse response) {
 
         if (isLogIn(request)) {
+
             ModelAndView modelAndView = new ModelAndView();
 
             modelAndView.setViewName("users");
@@ -48,16 +53,35 @@ public class UserController {
 
             return modelAndView;
         } else {
+
+            Cookie pageCookie = new Cookie("previous_page", null);
+            pageCookie.setMaxAge(0);
+            response.addCookie(pageCookie);
+
+            Cookie cookie = new Cookie("previous_page", "users");
+            cookie.setPath("/");
+            response.addCookie(cookie);
+
             return new ModelAndView("redirect:/login");
         }
     }
 
     @RequestMapping(value = "/creation", method = RequestMethod.GET)
-    public ModelAndView getCreateUserPage(HttpServletRequest request) {
+    public ModelAndView getCreateUserPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         if (isLogIn(request)) {
+
             return new ModelAndView("createUser");
         } else {
+
+            Cookie pageCookie = new Cookie("previous_page", null);
+            pageCookie.setMaxAge(0);
+            response.addCookie(pageCookie);
+
+            Cookie cookie = new Cookie("previous_page", "users/creation");
+            cookie.setPath("/");
+            response.addCookie(cookie);
+
             return new ModelAndView("redirect:/login");
         }
     }
@@ -67,7 +91,7 @@ public class UserController {
                                    @RequestParam String gender,
                                    @RequestParam String password,
                                    @RequestParam String email,
-                                   @RequestParam int age) throws NoSuchAlgorithmException {
+                                   @RequestParam int age) throws Exception {
 
         User user = new User(name, gender, email, age, Md5Util.md5(password));
         userService.createUser(user);
@@ -85,9 +109,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public ModelAndView getUpdateUserAge(HttpServletRequest request, @PathVariable int id) {
+    public ModelAndView getUpdateUserAge(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
 
         if (isLogIn(request)) {
+
             User user = userService.getUserById(id);
 
             ModelAndView modelAndView = new ModelAndView();
@@ -96,6 +121,14 @@ public class UserController {
 
             return modelAndView;
         } else {
+            Cookie pageCookie = new Cookie("previous_page", null);
+            pageCookie.setMaxAge(0);
+            response.addCookie(pageCookie);
+
+            Cookie cookie = new Cookie("previous_page", "users/update/"+id);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+
             return new ModelAndView("redirect:/login");
         }
     }

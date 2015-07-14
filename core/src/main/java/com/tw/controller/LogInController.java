@@ -31,11 +31,34 @@ public class LogInController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView getLoginPage() {
+    public ModelAndView getLoginPage(HttpServletRequest request) {
+//        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^");
+//        Cookie[] cookies = request.getCookies();
+//
+//        for(int i=0; i<cookies.length; i++){
+//            if(cookies[i].getName().equals("previous_page")){
+//                System.out.println(cookies[i].getValue());
+//            }
+//        }
+//        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("logIn");
 
         return modelAndView;
+    }
+
+    public String getPreviousPage(HttpServletRequest request){
+        String previousPage = "users";
+        Cookie[] cookies = request.getCookies();
+        for (int i=0; i<cookies.length; i++) {
+            if (cookies[i].getName().equals("previous_page")) {
+                previousPage = cookies[i].getValue();
+            }
+        }
+//        if(previousPage.equals("")){
+//            previousPage = "users";
+//        }
+        return previousPage;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -50,7 +73,10 @@ public class LogInController {
             if (logInMessage == "密码正确") {
                 Cookie cookie = new Cookie("current_user", currentUser.getName());
                 response.addCookie(cookie);
-                return new ModelAndView("redirect:/users");
+
+                String previousPage =getPreviousPage(request);
+
+                return new ModelAndView("redirect:/" + previousPage);
             } else {
                 return new ModelAndView("redirect:/userError");
             }
