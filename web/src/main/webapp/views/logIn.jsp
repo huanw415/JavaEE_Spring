@@ -8,18 +8,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>用户登录</title>
+  <link href="./lib/css/bootstrap.css" rel="stylesheet"/>
+  <script src="./lib/js/jquery-1.11.1.min.js"></script>
+  <script src="./lib/js/bootstrap.min.js"></script>
+  <title>用户登录</title>
 </head>
 <body>
-  <form name="log_in" method="post" action="">
-    <p> 用户名:
-      <input name="name" type="text">
-    </p>
-    <p> 密&nbsp;&nbsp;&nbsp;&nbsp;码:
-      <input name="password" type="password">
-    </p>
-    <input type="submit" value=" 提交">
-    <input type="reset" value="重填">
-  </form>
+  <div class="container">
+    <form name="log_in" method="post" action="">
+      <div class="form-group">
+        <label for="name">姓名</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="姓名">
+      </div>
+      <div class="form-group">
+        <label for="password">密码</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+      </div>
+
+      <button type="submit" class="btn btn-default">提交</button>
+      <button type="reset" class="btn btn-default">清空</button>
+    </form>
+  </div>
 </body>
 </html>
