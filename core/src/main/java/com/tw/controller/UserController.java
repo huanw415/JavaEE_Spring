@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.security.NoSuchAlgorithmException;
 
 /**
@@ -22,6 +20,12 @@ public class UserController {
     private UserService userService;
 
     public UserController() {
+    }
+
+    private Cookie deletePreviousPageCookie(){
+        Cookie pageCookie = new Cookie("previous_page", null);
+        pageCookie.setMaxAge(0);
+        return pageCookie;
     }
 
     @Autowired
@@ -53,10 +57,8 @@ public class UserController {
 
             return modelAndView;
         } else {
-
-            Cookie pageCookie = new Cookie("previous_page", null);
-            pageCookie.setMaxAge(0);
-            response.addCookie(pageCookie);
+            
+            response.addCookie(deletePreviousPageCookie());
 
             Cookie cookie = new Cookie("previous_page", "users");
             cookie.setPath("/");
@@ -74,9 +76,7 @@ public class UserController {
             return new ModelAndView("createUser");
         } else {
 
-            Cookie pageCookie = new Cookie("previous_page", null);
-            pageCookie.setMaxAge(0);
-            response.addCookie(pageCookie);
+            response.addCookie(deletePreviousPageCookie());
 
             Cookie cookie = new Cookie("previous_page", "users/creation");
             cookie.setPath("/");
@@ -121,9 +121,8 @@ public class UserController {
 
             return modelAndView;
         } else {
-            Cookie pageCookie = new Cookie("previous_page", null);
-            pageCookie.setMaxAge(0);
-            response.addCookie(pageCookie);
+
+            response.addCookie(deletePreviousPageCookie());
 
             Cookie cookie = new Cookie("previous_page", "users/update/"+id);
             cookie.setPath("/");
