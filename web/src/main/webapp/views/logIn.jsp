@@ -15,19 +15,25 @@
 </head>
 <body>
   <div class="container">
-    <form name="log_in" method="post" action="">
-      <div class="form-group">
-        <label for="name">姓名</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="姓名">
-      </div>
-      <div class="form-group">
-        <label for="password">密码</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-      </div>
 
-      <button type="submit" class="btn btn-default">提交</button>
-      <button type="reset" class="btn btn-default">清空</button>
+    <form name="log_in" method="post" action="">
+      <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+          <div class="form-group">
+            <label for="name">姓名</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="姓名">
+          </div>
+          <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          </div>
+
+          <button type="submit" class="btn btn-default">提交</button>
+          <button type="reset" class="btn btn-default">清空</button>
+        </div>
+      </div>
     </form>
+    
   </div>
 </body>
 </html>
