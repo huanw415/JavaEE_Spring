@@ -1,0 +1,10 @@
+USE users_management;
+
+CREATE TABLE SCHEDULE
+(
+  Id INT AUTO_INCREMENT primary key,
+  CustomerCourseId INT NOT NULL,
+  CoachId INT NOT NULL,
+  FOREIGN KEY (CustomerCourseId) REFERENCES CUSTOMER_COURSE(Id),
+  FOREIGN KEY (CoachId) REFERENCES EMPLOYEE(Id)
+);
