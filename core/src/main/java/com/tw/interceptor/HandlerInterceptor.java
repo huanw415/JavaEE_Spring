@@ -30,8 +30,14 @@ public class HandlerInterceptor extends HandlerInterceptorAdapter {
 
             response.sendRedirect("/web/login");
             return false;
-        }
+        }else {
+            Cookie cookie = new Cookie("previous_page", null);
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            response.addCookie(cookie);
 
-        return true;
+            return true;
+
+        }
     }
 }
