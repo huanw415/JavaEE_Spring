@@ -17,4 +17,26 @@
         <property name="prefix" value="/views/" />
         <property name="suffix" value=".jsp" />
     </bean>
+
+    <!--<bean id="handlerInterceptor"-->
+          <!--class="com.tw.interceptor.HandlerInterceptor"/>-->
+
+    <!--<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">-->
+        <!--<property name="interceptors">-->
+            <!--<list>-->
+                <!--<ref bean="handlerInterceptor"/>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <mvc:interceptors>
+        <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+        <!--<bean class="com.tw.interceptor.HandlerInterceptor"/>-->
+        <mvc:interceptor>
+            <mvc:mapping path="/users/**"/>
+            <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <bean class="com.tw.interceptor.HandlerInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>
