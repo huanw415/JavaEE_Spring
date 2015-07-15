@@ -16,11 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/")
 public class LogOutController {
 
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
     public ModelAndView logout(HttpServletResponse response) {
-        Cookie usercookie = new Cookie("current_user", null);
-        usercookie.setMaxAge(0);
-        response.addCookie(usercookie);
+        Cookie userCookie = new Cookie("current_user", null);
+        userCookie.setMaxAge(0);
+        response.addCookie(userCookie);
 
         Cookie pageCookie = new Cookie("previous_page", null);
         pageCookie.setMaxAge(0);

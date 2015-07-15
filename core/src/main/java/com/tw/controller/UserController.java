@@ -7,10 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-import java.security.NoSuchAlgorithmException;
-
 /**
  * Created by hgwang on 7/9/15.
  */
@@ -31,48 +27,16 @@ public class UserController {
         return modelAndView;
     }
 
-    private Cookie deletePreviousPageCookie(){
-        Cookie pageCookie = new Cookie("previous_page", null);
-        pageCookie.setMaxAge(0);
-        return pageCookie;
-    }
-
-    private Cookie createPreviousPageCookie(String cookieValue){
-        Cookie cookie = new Cookie("previous_page", cookieValue);
-        cookie.setPath("/");
-
-        return cookie;
-    }
-
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getAllUsers(@CookieValue(value = "current_user", defaultValue = "") String currentUser,
-                                    HttpServletResponse response) {
-        if (!currentUser.equals("")) {
+    public ModelAndView getAllUsers() {
 
             return createModelAndView("users", "users", userService.getAllUsers());
-        } else {
-
-            response.addCookie(deletePreviousPageCookie());
-            response.addCookie(createPreviousPageCookie("users"));
-
-            return new ModelAndView("redirect:/login");
-        }
     }
 
     @RequestMapping(value = "/creation", method = RequestMethod.GET)
-    public ModelAndView getCreateUserPage(@CookieValue(value = "current_user", defaultValue = "") String currentUser,
-                                          HttpServletResponse response) throws Exception {
-
-        if (!currentUser.equals("")) {
+    public ModelAndView getCreateUserPage() {
 
             return new ModelAndView("createUser");
-        } else {
-
-            response.addCookie(deletePreviousPageCookie());
-            response.addCookie(createPreviousPageCookie("users/creation"));
-
-            return new ModelAndView("redirect:/login");
-        }
     }
 
     @RequestMapping(value = "/creation", method = RequestMethod.POST)
@@ -80,7 +44,7 @@ public class UserController {
                                    @RequestParam String gender,
                                    @RequestParam String password,
                                    @RequestParam String email,
-                                   @RequestParam int age) throws Exception {
+                                   @RequestParam int age){
 
         User user = new User(name, gender, email, age, Md5Util.md5(password));
         userService.createUser(user);
@@ -96,22 +60,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public ModelAndView getUpdateUserAge(@CookieValue(value = "current_user", defaultValue = "") String currentUser,
-                                         HttpServletResponse response,
-                                         @PathVariable int id) {
-
-        if (!currentUser.equals("")) {
+    public ModelAndView getUpdateUserAge(@PathVariable int id) {
 
             User user = userService.getUserById(id);
-
             return createModelAndView("updateUser", "user", user);
-        } else {
-
-            response.addCookie(deletePreviousPageCookie());
-            response.addCookie(createPreviousPageCookie("users/update/"+id));
-
-            return new ModelAndView("redirect:/login");
-        }
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
@@ -120,7 +72,7 @@ public class UserController {
                                    @RequestParam String gender,
                                    @RequestParam String email,
                                    @RequestParam int age,
-                                   @RequestParam String password) throws NoSuchAlgorithmException {
+                                   @RequestParam String password){
         User user = new User(id, name, gender, email, age, Md5Util.md5(password));
         userService.updateUser(user);
 
