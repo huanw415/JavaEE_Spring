@@ -23,12 +23,8 @@ public class HandlerInterceptor extends HandlerInterceptorAdapter {
         }
 
         if(currentUser.equals("")){
-            Cookie pageCookie = new Cookie("previous_page", null);
-            pageCookie.setMaxAge(0);
-            pageCookie.setPath("/");
-            response.addCookie(pageCookie);
 
-            Cookie cookie = new Cookie("previous_page", request.getRequestURI().substring(4));
+            Cookie cookie = new Cookie("previous_page", request.getRequestURI().substring(5));
             cookie.setPath("/");
             response.addCookie(cookie);
 
