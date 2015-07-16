@@ -64,25 +64,17 @@ public class UserDao {
     public void createUser(User user) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-        //创建事务对象
         session.beginTransaction();
-
         session.save(user);
-
-        //提交事务对象
         session.getTransaction().commit();
-//        session.close();
     }
 
     public void deleteUser(User user) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
         session.beginTransaction();
-
         session.delete(user);
-
         session.getTransaction().commit();
-//        session.close();
     }
 
     public void updateUser(User user) {
@@ -91,7 +83,5 @@ public class UserDao {
         session.beginTransaction();
         session.update(user);
         session.getTransaction().commit();
-
-//        session.close();
     }
 }
