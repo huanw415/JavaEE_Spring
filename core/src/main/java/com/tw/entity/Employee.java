@@ -43,7 +43,7 @@ public class Employee {
         this.role = role;
     }
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="UserId")
     public int getUserId() {
         return userId;
