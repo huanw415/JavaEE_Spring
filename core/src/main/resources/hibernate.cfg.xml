@@ -13,6 +13,6 @@
         <property name="show_sql">true</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <mapping class="com.tw.entity.User"/>
-        <mapping class="com.tw.entity.Coach"/>
+        <mapping class="com.tw.entity.Employee"/>
     </session-factory>
 </hibernate-configuration>
