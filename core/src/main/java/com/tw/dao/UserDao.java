@@ -15,40 +15,54 @@ public class UserDao {
 
     public List<User> getUsersByName(String name) {
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+
         String hql = "from User where name=:name";
         Query query = session.createQuery(hql);
         query.setString("name", name);
 
-        return query.list();
+        List<User>  users = query.list();
+
+        session.getTransaction().commit();
+
+        return users;
     }
 
     public User getUserById(int id) {
 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
 
         String hql = "from User where id=:id";
         Query query = session.createQuery(hql);
         query.setInteger("id", id);
 
-        return (User) query.list().get(0);
+        User user = (User)query.list().get(0);
+
+        session.getTransaction().commit();
+
+        return user;
     }
 
     public List<User> getAllUsers() {
 
-        List<User> users;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
 
-        users = session.createQuery("FROM User").list();
-//        session.close();
+        Query query = session.createQuery("from User");
+        List<User> userList = query.list();
 
-        return users;
+        session.getTransaction().commit();
+
+        return userList;
     }
 
     public void createUser(User user) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
         //创建事务对象
         session.beginTransaction();
@@ -61,7 +75,7 @@ public class UserDao {
     }
 
     public void deleteUser(User user) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
         session.beginTransaction();
 
@@ -72,7 +86,7 @@ public class UserDao {
     }
 
     public void updateUser(User user) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
         session.beginTransaction();
         session.update(user);
