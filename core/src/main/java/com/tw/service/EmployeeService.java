@@ -15,9 +15,9 @@ import java.util.List;
 public class EmployeeService {
 
     @Autowired
-    private static EmployeeDao employeeDao;
+    private EmployeeDao employeeDao;
 
-    public static List<Employee> getAllEmployees(){
+    public List<Employee> getAllEmployees(){
         return employeeDao.getAllEmployees();
     }
 }
