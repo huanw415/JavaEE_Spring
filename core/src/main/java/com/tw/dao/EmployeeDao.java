@@ -15,10 +15,13 @@ public class EmployeeDao {
     public List<Employee> getAllEmployees(){
 
         List<Employee> employees;
-
         Session session = HibernateUtil.getSessionFactory().openSession();
+
+        session.beginTransaction();
+
         employees = session.createQuery("FROM Employee").list();
-        session.close();
+
+        session.getTransaction().commit();
 
         return employees;
     }

@@ -42,7 +42,7 @@ public class UserDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         users = session.createQuery("FROM User").list();
-        session.close();
+//        session.close();
 
         return users;
     }
@@ -57,7 +57,7 @@ public class UserDao {
 
         //提交事务对象
         session.getTransaction().commit();
-        session.close();
+//        session.close();
     }
 
     public void deleteUser(User user) {
@@ -68,7 +68,7 @@ public class UserDao {
         session.delete(user);
 
         session.getTransaction().commit();
-        session.close();
+//        session.close();
     }
 
     public void updateUser(User user) {
@@ -78,6 +78,6 @@ public class UserDao {
         session.update(user);
         session.getTransaction().commit();
 
-        session.close();
+//        session.close();
     }
 }
