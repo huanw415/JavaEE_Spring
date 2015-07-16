@@ -1,0 +1,3 @@
+INSERT INTO CUSTOMER (Name) VALUES ('customer_1');
+INSERT INTO CUSTOMER (Name) VALUES ('customer_2');
+INSERT INTO CUSTOMER (Name) VALUES ('customer_3');
