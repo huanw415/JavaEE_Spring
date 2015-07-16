@@ -14,13 +14,10 @@ import java.util.List;
 public class EmployeeDao {
     public List<Employee> getAllEmployees(){
 
-        List<Employee> employees;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
         session.beginTransaction();
-
-        employees = session.createQuery("FROM Employee").list();
-
+        List<Employee> employees = session.createQuery("FROM Employee").list();
         session.getTransaction().commit();
 
         return employees;
