@@ -4,6 +4,29 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_3.dtd">
 
+    <!--<filter>-->
+        <!--<filter-name>hibernateFilter</filter-name>-->
+        <!--<filter-class> org.springframework.orm.hibernate4.support.OpenSessionInViewFilter </filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>sessionFactoryBeanName</param-name>-->
+            <!--<param-value>sessionFactory</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>singleSession</param-name>-->
+            <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--&lt;!&ndash; ???NEVER,????????AUTO??????&ndash;&gt;-->
+            <!--<param-name>flushMode</param-name>-->
+            <!--<param-value>AUTO</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+
+    <!--<filter-mapping>-->
+        <!--<filter-name>hibernateFilter</filter-name>-->
+        <!--<url-pattern>/**</url-pattern>-->
+    <!--</filter-mapping>-->
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/spring-web-servlet.xml</param-value>
@@ -27,13 +50,18 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <filter>
-        <filter-name>hibernateFilter</filter-name>
-        <filter-class> org.springframework.orm.hibernate3.support.OpenSessionInViewFilter </filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>hibernateFilter</filter-name>
-        <url-pattern>/**</url-pattern>
-    </filter-mapping>
 
+
+
+
+    <!--<filter>-->
+        <!--<filter-name>OpenSessionInViewFilter</filter-name>-->
+        <!--<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>sessionFactoryBeanName</param-name><param-value>sessionFactory</param-value></init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>OpenSessionInViewFilter</filter-name>-->
+        <!--<url-pattern>*.do</url-pattern>-->
+    <!--</filter-mapping>-->
 </web-app>
