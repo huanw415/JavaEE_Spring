@@ -1,9 +1,6 @@
 package com.tw.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by hgwang on 7/16/15.
@@ -11,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="employee")
-public class Coach {
+public class Employee {
 
     private int id;
     private String name;
@@ -46,7 +43,8 @@ public class Coach {
         this.role = role;
     }
 
-    @Column(name="UserId")
+    @OneToOne
+    @JoinColumn(name="UserId")
     public int getUserId() {
         return userId;
     }
