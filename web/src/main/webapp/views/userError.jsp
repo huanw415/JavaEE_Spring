@@ -12,5 +12,6 @@
 </head>
 <body>
   <p>用户名或密码错误</p>
+  <a href="./users">返回重新登录</a>
 </body>
 </html>
