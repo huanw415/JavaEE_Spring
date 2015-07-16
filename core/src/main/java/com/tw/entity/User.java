@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 public class User {
-    
+
     private int id;
     private String name;
     private String gender;
