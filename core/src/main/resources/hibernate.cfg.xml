@@ -19,6 +19,7 @@
         <mapping class="com.tw.entity.User"/>
         <mapping class="com.tw.entity.Employee"/>
         <mapping class="com.tw.entity.Customer"/>
+        <mapping class="com.tw.entity.Course"/>
 
     </session-factory>
 </hibernate-configuration>
