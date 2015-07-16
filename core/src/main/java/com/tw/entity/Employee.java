@@ -13,7 +13,7 @@ public class Employee {
     private int id;
     private String name;
     private String role;
-    private int userId;
+    private User user;
 
     @Id
     @Column(name="Id")
@@ -45,11 +45,11 @@ public class Employee {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="UserId")
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
