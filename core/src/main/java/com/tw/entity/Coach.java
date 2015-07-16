@@ -13,19 +13,13 @@ import javax.persistence.Table;
 @Table(name="employee")
 public class Coach {
 
-    @Id
-    @Column(name="Id")
     private int id;
-
-    @Column(name="Name")
     private String name;
-
-    @Column(name="Role")
     private String role;
-
-    @Column(name="UserId")
     private int userId;
 
+    @Id
+    @Column(name="Id")
     public int getId() {
         return id;
     }
@@ -34,6 +28,7 @@ public class Coach {
         this.id = id;
     }
 
+    @Column(name="Name")
     public String getName() {
         return name;
     }
@@ -42,6 +37,7 @@ public class Coach {
         this.name = name;
     }
 
+    @Column(name="Role")
     public String getRole() {
         return role;
     }
@@ -50,6 +46,7 @@ public class Coach {
         this.role = role;
     }
 
+    @Column(name="UserId")
     public int getUserId() {
         return userId;
     }

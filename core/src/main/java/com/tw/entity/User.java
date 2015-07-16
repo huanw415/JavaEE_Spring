@@ -9,24 +9,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 public class User {
-
-    @Id
-    @Column(name = "Id")
+    
     private int id;
-
-    @Column(name = "Name")
     private String name;
-
-    @Column(name = "Gender")
     private String gender;
-
-    @Column(name = "Email")
     private String email;
-
-    @Column(name = "Age")
     private int age;
-
-    @Column(name = "Password")
     private String password;
 
     public User() {
@@ -49,6 +37,8 @@ public class User {
         this.password = password;
     }
 
+    @Id
+    @Column(name = "Id")
     public int getId() {
         return id;
     }
@@ -57,6 +47,7 @@ public class User {
         this.id = id;
     }
 
+    @Column(name = "Name")
     public String getName() {
         return name;
     }
@@ -65,6 +56,7 @@ public class User {
         this.name = name;
     }
 
+    @Column(name = "Gender")
     public String getGender() {
         return gender;
     }
@@ -73,6 +65,7 @@ public class User {
         this.gender = gender;
     }
 
+    @Column(name = "Email")
     public String getEmail() {
         return email;
     }
@@ -81,6 +74,7 @@ public class User {
         this.email = email;
     }
 
+    @Column(name = "Age")
     public int getAge() {
         return age;
     }
@@ -89,6 +83,7 @@ public class User {
         this.age = age;
     }
 
+    @Column(name = "Password")
     public String getPassword() {
         return password;
     }
