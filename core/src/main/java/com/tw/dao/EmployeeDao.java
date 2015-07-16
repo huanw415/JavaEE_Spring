@@ -2,6 +2,7 @@ package com.tw.dao;
 
 import com.tw.Util.HibernateUtil;
 import com.tw.entity.Employee;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -18,8 +19,34 @@ public class EmployeeDao {
 
         session.beginTransaction();
         List<Employee> employees = session.createQuery("FROM Employee").list();
+
         session.getTransaction().commit();
 
         return employees;
     }
 }
+
+//public class EmployeeDao extends HibernateDaoSupport {
+//
+//    private SessionFactory sessionFactory;
+//
+//    @Autowired
+//    public EmployeeDao(SessionFactory sessionfactory){
+//        this.sessionFactory = sessionfactory;
+//        setSessionFactory(sessionfactory);
+//    }
+//
+//
+//    public List<Employee> getAllEmployees(){
+//System.out.println("++++++++++++++++++" + sessionFactory +"++++++++++++++++++");
+////        Session session = getSessionFactory().getCurrentSession();
+////        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+////        sessionFactory.openSession();
+////        session.beginTransaction();
+//        List<Employee> employees = (List<Employee>)getHibernateTemplate().find("from Employee");
+////        List<Employee> employees = session.createQuery("FROM Employee").list();
+////        session.getTransaction().commit();
+//
+//        return employees;
+//    }
+//}
