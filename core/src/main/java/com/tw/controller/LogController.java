@@ -5,10 +5,14 @@ import com.tw.entity.User;
 import com.tw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.*;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
@@ -18,13 +22,19 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
-public class LogInController {
+public class LogController {
 
     @Autowired
     private UserService userService;
 
+//    @Autowired
+//    private CourseService courseService;
+//
+//    @Autowired
+//    private CustomerService customerService;
+
     private String getPreviousPageUrl(String previousUrl){
-        String previousPageUrl = "users";
+        String previousPageUrl = "index";
         if(!previousUrl.equals("")){
             previousPageUrl = previousUrl;
         }
@@ -33,6 +43,9 @@ public class LogInController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView getLoginPage() {
+//System.out.println("==============================");
+//System.out.println(customerService.getAllCustomers().get(0).getCourses().get(0).getName());
+//System.out.println("==============================");
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("logIn");
