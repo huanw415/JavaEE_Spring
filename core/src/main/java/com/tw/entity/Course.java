@@ -1,6 +1,7 @@
 package com.tw.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by hgwang on 7/16/15.
@@ -12,6 +13,7 @@ public class Course {
     private int id;
     private String name;
     private Employee coach;
+    private List<Customer> customers;
 
     @Id
     @Column(name = "Id")
@@ -40,5 +42,17 @@ public class Course {
 
     public void setCoach(Employee coach) {
         this.coach = coach;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "CUSTOMER_COURSE",
+            joinColumns = {@JoinColumn(name = "CourseId")},
+            inverseJoinColumns = {@JoinColumn(name = "CustomerId")})
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 }

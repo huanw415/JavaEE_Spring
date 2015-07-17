@@ -1,9 +1,7 @@
 package com.tw.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by hgwang on 7/16/15.
@@ -14,6 +12,7 @@ import javax.persistence.Table;
 public class Customer {
     private int id;
     private String name;
+    private List<Course> courses;
 
     @Id
     @Column(name="Id")
@@ -32,5 +31,14 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @ManyToMany(mappedBy = "customers")
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }
