@@ -1,3 +1,5 @@
+<%@ page import="com.tw.entity.Course" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: hgwang
@@ -14,6 +16,8 @@
 
   <script src="./lib/js/jquery-1.11.1.min.js"></script>
   <script src="./lib/js/bootstrap.min.js"></script>
+
+  <script src="./js/courses.js"></script>
 </head>
 <body>
   <div class="container">
@@ -33,6 +37,34 @@
         </div>
       </div>
     </nav>
+
+    <table class="table table-bordered">
+      <caption><h2>用户信息表</h2></caption>
+      <tr>
+        <th>名称</th>
+        <th>教师</th>
+        <th>修改</th>
+        <th>删除</th>
+      </tr>
+      <%
+        List<Course> courses = (List<Course>)request.getAttribute("courses");
+
+        for(int i=0; i<courses.size(); i++){
+      %>
+      <tr>
+        <td><%= courses.get(i).getName()%></td>
+        <td><%= courses.get(i).getCoach().getName()%></td>
+        <td>
+          <a href="./courses/update/<%= courses.get(i).getId()%>">修改</a>
+        </td>
+        <td>
+          <a type="button" class="deleteCourse" data-id="<%= courses.get(i).getId()%>">删除</a>
+        </td>
+      </tr>
+      <%
+        }
+      %>
+    </table>
   </div>
 </body>
 </html>
