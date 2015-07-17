@@ -20,7 +20,7 @@
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="./index"> 首页 </a></li>
+            <li class="active"><a href="./index"> 首页 </a></li>
             <li><a href="./users">员工管理</a> </li>
             <li><a href="./users">顾客管理</a> </li>
             <li><a href="./users">课程管理</a> </li>
