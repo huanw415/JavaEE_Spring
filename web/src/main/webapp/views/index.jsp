@@ -23,8 +23,8 @@
             <li class="active"><a href="./index"> 首页 </a></li>
             <li><a href="./users">用户管理</a> </li>
             <li><a href="./users">员工管理</a> </li>
-            <li><a href="./users">顾客管理</a> </li>
-            <li><a href="./customers">课程管理</a> </li>
+            <li><a href="./users">课程管理</a> </li>
+            <li><a href="./customers">顾客管理</a> </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a type="button" href="./logout">退出登录</a></li>
