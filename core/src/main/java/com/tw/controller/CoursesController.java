@@ -2,6 +2,7 @@ package com.tw.controller;
 
 import com.tw.entity.Course;
 import com.tw.service.CourseService;
+import com.tw.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,9 @@ public class CoursesController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getCoursesPage(){
