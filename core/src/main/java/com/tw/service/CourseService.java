@@ -19,4 +19,8 @@ public class CourseService {
     public List<Course> getAllCourses(){
         return courseDao.getAllCourses();
     }
+
+    public Course getCourseById(int id){
+        return courseDao.getCourseById(id);
+    }
 }
