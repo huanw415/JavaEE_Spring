@@ -16,7 +16,7 @@
 
   <script src="../../lib/js/jquery-1.11.1.min.js"></script>
   <script src="../../lib/js/bootstrap.min.js"></script>
-  <%--<script src="../../js/updateUser.js"></script>--%>
+  <script src="../../js/updateCourse.js"></script>
 </head>
 <body>
 <div class="container">
@@ -35,7 +35,7 @@
           <label for="dropdown">教练：</label>
           <div class="dropdown" id ="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Dropdown
+              <%= ((Course) request.getAttribute("course")).getCoach().getName()%>
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -44,7 +44,10 @@
 
                 for(int i=0; i<coaches.size(); i++){
               %>
-              <li><%= coaches.get(i).getName()%></li>
+              <li>
+                <a type="button" class="chooseCoach" data-name="<%= coaches.get(i).getName()%>"><%= coaches.get(i).getName()%></a>
+
+              </li>
               <%
                 }
               %>
