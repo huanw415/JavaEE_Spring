@@ -25,6 +25,9 @@
             <li><a href="./users">顾客管理</a> </li>
             <li><a href="./users">课程管理</a> </li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a type="button" href="./logout">退出登录</a></li>
+          </ul>
         </div>
       </div>
     </nav>
