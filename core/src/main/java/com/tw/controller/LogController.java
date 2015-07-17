@@ -79,6 +79,15 @@ public class LogController {
         }
     }
 
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    public ModelAndView logout(HttpServletResponse response) {
+        Cookie userCookie = new Cookie("current_user", null);
+        userCookie.setMaxAge(0);
+        response.addCookie(userCookie);
+
+        return new ModelAndView("redirect:/login");
+    }
+
     @RequestMapping("/userError")
     public ModelAndView getUserError() {
         return new ModelAndView("userError");
