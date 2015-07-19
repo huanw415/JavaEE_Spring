@@ -12,16 +12,16 @@ public class Course {
 
     private int id;
     private String name;
-    private Coach coach;
+    private Employee employee;
     private List<Customer> customers;
 
     public Course() {
     }
 
-    public Course(int id, String name, Coach coach) {
+    public Course(int id, String name, Employee employee) {
         this.id = id;
         this.name = name;
-        this.coach = coach;
+        this.employee = employee;
     }
 
     @Id
@@ -43,15 +43,22 @@ public class Course {
         this.name = name;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity=Employee.class)
     @JoinColumn(name = "CoachId")
-    public Coach getCoach() {
-        return coach;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setCoach(Coach coach) {
-        this.coach = coach;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
+//    public Coach getCoach() {
+//        return coach;
+//    }
+//
+//    public void setCoach(Coach coach) {
+//        this.coach = coach;
+//    }
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "CUSTOMER_COURSE",

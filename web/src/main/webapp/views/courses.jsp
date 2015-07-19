@@ -53,7 +53,7 @@
       %>
       <tr>
         <td><%= courses.get(i).getName()%></td>
-        <td><%= courses.get(i).getCoach().getName()%></td>
+        <td><%= courses.get(i).getEmployee().getName()%></td>
         <td>
           <a href="./courses/update/<%= courses.get(i).getId()%>">修改</a>
         </td>
