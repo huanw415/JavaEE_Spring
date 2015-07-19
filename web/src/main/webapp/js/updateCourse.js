@@ -15,15 +15,19 @@ $(function () {
 
         var courseId = $(this).data("id");
         var coachId = $('#dropdownMenu').data('id');
-        var courseName = $('#dropdownMenu').text();
-        console.log(courseName + "=======");
-        console.log(coachId + "=======");
+        var courseName = $('#dropdownMenu').text().trim();
         $.ajax({
-            type: 'POST',
-            url: './courses/update/' + courseId,
-            data: {coachId: coachId,
+            type: 'PUT',
+            //headers: {
+            //    'Accept': 'application/json',
+            //    'Content-Type': 'application/json'
+            //},
+
+            url: '/web/courses/update/' + courseId,
+            data: {
+                   coachId: coachId,
                    courseName: courseName},
-            success: function(){
+            success: function(result){
                 $(location).attr('href', './courses');
             }
         });

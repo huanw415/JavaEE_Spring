@@ -40,16 +40,19 @@ public class CoursesController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
     public void updateCourse(@PathVariable int id,
-                             @RequestParam(value = "coachId", required = true) int coachId,
-                             @RequestParam(value = "courseName", required = true)  String courseName){
+                             @RequestBody int coachId,
+                             @RequestBody String courseName){
         System.out.println("=================================");
-System.out.println(coachService.getCoachById(coachId));
-        System.out.println("=================================");
-
-        Course course = new Course(id , courseName, coachService.getCoachById(coachId));
-        courseService.updateCourse(course);
+//        return "===========";
+//System.out.println(coachService.getCoachById(coachId));
+//        System.out.println("=================================");
+//
+//        Course course = new Course(id , courseName, coachService.getCoachById(coachId));
+//        courseService.updateCourse(course);
     }
+
+
 
 }

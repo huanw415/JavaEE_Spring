@@ -22,14 +22,14 @@
 <body>
 <div class="container">
 
-  <form name="new_user" method="POST" action="">
+  <%--<form>--%>
     <div class="row">
       <div class="col-md-offset-4 col-lg-4">
         <h3>修改用户信息</h3>
         <hr />
         <div class="form-group">
           <label for="name">姓名：</label>
-          <input type="text" class="form-control" id="name" name="courseName" placeholder="姓名" value="<%= ((Course)request.getAttribute("course")).getName()%>">
+          <input type="text" class="form-control" id="name" placeholder="姓名" value="<%= ((Course)request.getAttribute("course")).getName()%>">
         </div>
 
         <div class="from-group">
@@ -60,7 +60,7 @@
         </div>
       </div>
     </div>
-  </form>
+  <%--</form>--%>
 </div>
 </body>
 </html>
