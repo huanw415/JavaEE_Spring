@@ -41,7 +41,6 @@
             <th>邮箱</th>
             <th>年龄</th>
             <th>修改</th>
-            <%--<th>删除</th>--%>
         </tr>
         <%
             List<Employee> employees = (List<Employee>)request.getAttribute("employees");
@@ -58,9 +57,6 @@
             <td>
                 <a href="./employees/update/<%= employees.get(i).getId()%>">修改</a>
             </td>
-            <%--<td>--%>
-                <%--<a type="button" class="deleteEmployee" data-id="<%= employees.get(i).getId()%>">删除</a>--%>
-            <%--</td>--%>
         </tr>
         <%
             }
