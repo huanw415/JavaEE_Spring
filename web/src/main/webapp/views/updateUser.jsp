@@ -15,7 +15,7 @@
 
   <script src="../../lib/js/jquery-1.11.1.min.js"></script>
   <script src="../../lib/js/bootstrap.min.js"></script>
-  <script src="../../js/updateUser.js"></script>
+  <script src="../../js/updateEmployee.js"></script>
 
 </head>
 <body>
