@@ -26,6 +26,6 @@ public class EmployeeController {
     @RequestMapping(value = "update/{id}", method = RequestMethod.GET)
     public ModelAndView getEmployeesUpdatePage(@PathVariable int id){
 
-        return new ModelAndView("employeeUpdate", "employee", employeeService.getEmployeeById(id));
+        return new ModelAndView("updateEmployee", "employee", employeeService.getEmployeeById(id));
     }
 }
