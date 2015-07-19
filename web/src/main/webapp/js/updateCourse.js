@@ -16,7 +16,8 @@ $(function () {
         var courseId = $(this).data("id");
         var coachId = $('#dropdownMenu').data('id');
         var courseName = $('#dropdownMenu').text();
-
+        console.log(courseName + "=======");
+        console.log(coachId + "=======");
         $.ajax({
             type: 'POST',
             url: './courses/update/' + courseId,

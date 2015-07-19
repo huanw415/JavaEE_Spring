@@ -1,7 +1,6 @@
 package com.tw.service;
 
 import com.tw.dao.CoachDao;
-import com.tw.entity.Coach;
 import com.tw.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,14 +16,11 @@ public class CoachService {
     @Autowired
     private CoachDao coachDao;
 
-//    public List<Coach> getAllCoaches(){
-//        return coachDao.getAllCoaches();
-//    }
-public List<Employee> getAllCoaches(){
+    public List<Employee> getAllCoaches(){
     return coachDao.getAllCoaches();
 }
 
-    public Coach getCoachById(int id){
+    public Employee getCoachById(int id){
         return coachDao.getCoachById(id);
     }
 }

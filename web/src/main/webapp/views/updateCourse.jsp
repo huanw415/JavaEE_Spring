@@ -36,7 +36,7 @@
           <label for="dropdown">教练：</label>
           <div class="dropdown" id ="dropdown">
             <button data-id="<%= ((Course) request.getAttribute("course")).getEmployee().getId()%>" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <%= ((Course) request.getAttribute("course")).getEmployee().getName()%>
+              <%=((Course) request.getAttribute("course")).getEmployee().getName()%>
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
