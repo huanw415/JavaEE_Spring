@@ -52,13 +52,6 @@ public class Course {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-//    public Coach getCoach() {
-//        return coach;
-//    }
-//
-//    public void setCoach(Coach coach) {
-//        this.coach = coach;
-//    }
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "CUSTOMER_COURSE",

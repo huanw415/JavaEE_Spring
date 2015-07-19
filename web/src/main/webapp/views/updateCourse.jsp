@@ -1,6 +1,7 @@
 <%@ page import="com.tw.entity.Coach" %>
 <%@ page import="com.tw.entity.Course" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.tw.entity.Employee" %>
 <%--
   Created by IntelliJ IDEA.
   User: hgwang
@@ -34,13 +35,13 @@
         <div class="from-group">
           <label for="dropdown">教练：</label>
           <div class="dropdown" id ="dropdown">
-            <button data-id="<%= ((Course) request.getAttribute("course")).getCoach().getId()%>" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <%= ((Course) request.getAttribute("course")).getCoach().getName()%>
+            <button data-id="<%= ((Course) request.getAttribute("course")).getEmployee().getId()%>" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <%= ((Course) request.getAttribute("course")).getEmployee().getName()%>
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <%
-                List<Coach> coaches = (List<Coach>)request.getAttribute("coaches");
+                List<Employee> coaches = (List<Employee>)request.getAttribute("coaches");
 
                 for(int i=0; i<coaches.size(); i++){
               %>

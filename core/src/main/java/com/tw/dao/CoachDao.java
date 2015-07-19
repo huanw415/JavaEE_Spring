@@ -19,7 +19,11 @@ public class CoachDao {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
         session.beginTransaction();
-        List<Employee> employees = session.createQuery("FROM Employee where role= coach").list();
+//        List<Employee> employees = session.createQuery("FROM Employee where Role=:role").list();
+        String hql = "FROM Employee where Role=:role";
+        Query query = session.createQuery(hql);
+        query.setString("role", "coach");
+        List<Employee> employees = query.list();
 //        List<Coach> Coaches = session.createQuery("FROM Employee where role= coach").list();
 
         session.getTransaction().commit();
