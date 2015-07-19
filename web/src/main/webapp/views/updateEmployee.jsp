@@ -33,13 +33,13 @@
           <div class="from-group">
             <label id="role" data-value="<%= ((Employee)request.getAttribute("employee")).getRole()%>">职位</label>
             <label for="OPs">
-              <input type="radio" id="OPs" name="OPs" value="OPs"> OPs
+              <input type="radio" id="OPs" name="role" value="OPs"> OPs
             </label>
             <label for="coach">
-              <input type="radio" id="coach" name="coach" value="Coach"> Coach
+              <input type="radio" id="coach" name="role" value="Coach"> Coach
             </label>
             <label for="HR">
-              <input type="radio" id="HR" name="HR" value="HR"> HR
+              <input type="radio" id="HR" name="role" value="HR"> HR
             </label>
           </div>
 

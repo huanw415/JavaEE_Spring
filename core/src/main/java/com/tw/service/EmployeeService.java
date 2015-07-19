@@ -23,4 +23,8 @@ public class EmployeeService {
     public Employee getEmployeeById(int id){
         return employeeDao.getEmployeeById(id);
     }
+
+    public void updateEmployee(Employee employee){
+        employeeDao.updateEmployee(employee);
+    }
 }

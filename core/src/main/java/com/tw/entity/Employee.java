@@ -15,6 +15,15 @@ public class Employee {
     private String role;
     private User user;
 
+    public Employee() {
+    }
+
+    public Employee(int id, String name, String role) {
+        this.id = id;
+        this.name = name;
+        this.role = role;
+    }
+
     @Id
     @Column(name="Id")
     public int getId() {
