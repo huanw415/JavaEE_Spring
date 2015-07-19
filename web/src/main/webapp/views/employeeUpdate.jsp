@@ -15,7 +15,7 @@
 
   <script src="../../lib/js/jquery-1.11.1.min.js"></script>
   <script src="../../lib/js/bootstrap.min.js"></script>
-  <%--<script src="../../js/updateEmployee.js"></script>--%>
+  <script src="../../js/updateEmployee.js"></script>
 </head>
 <body>
   <div class="container">
@@ -31,7 +31,7 @@
           </div>
 
           <div class="from-group">
-            <label id="role" data-value="<%= ((Employee)request.getAttribute("employee")).getName()%>">职位</label>
+            <label id="role" data-value="<%= ((Employee)request.getAttribute("employee")).getRole()%>">职位</label>
             <label for="OPs">
               <input type="radio" id="OPs" name="OPs" value="OPs"> OPs
             </label>
@@ -43,30 +43,30 @@
             </label>
           </div>
 
-          <div class="form-group">
-            <label for="name">用户名</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="用户名" value="<%= ((Employee) request.getAttribute("employee")).getUser().getName()%>">
-          </div>
+          <%--<div class="form-group">--%>
+            <%--<label for="name">用户名</label>--%>
+            <%--<input type="text" class="form-control" id="name" name="name" placeholder="用户名" value="<%= ((Employee) request.getAttribute("employee")).getUser().getName()%>">--%>
+          <%--</div>--%>
 
-          <div class="from-group">
-            <label id="gender" data-value="<%= ((Employee)request.getAttribute("employee")).getUser().getName()%>">性别</label>
-            <label for="male">
-              <input type="radio" id="male" name="gender" value="男"> 男
-            </label>
-            <label for="female">
-              <input type="radio" id="female" name="gender" value="女"> 女
-            </label>
-          </div>
+          <%--<div class="from-group">--%>
+            <%--<label id="gender" data-value="<%= ((Employee)request.getAttribute("employee")).getUser().getName()%>">性别</label>--%>
+            <%--<label for="male">--%>
+              <%--<input type="radio" id="male" name="gender" value="男"> 男--%>
+            <%--</label>--%>
+            <%--<label for="female">--%>
+              <%--<input type="radio" id="female" name="gender" value="女"> 女--%>
+            <%--</label>--%>
+          <%--</div>--%>
 
-          <div class="form-group">
-            <label for="email">邮箱</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="邮箱" value="<%= ((Employee)request.getAttribute("employee")).getUser().getEmail()%>">
-          </div>
+          <%--<div class="form-group">--%>
+            <%--<label for="email">邮箱</label>--%>
+            <%--<input type="email" class="form-control" id="email" name="email" placeholder="邮箱" value="<%= ((Employee)request.getAttribute("employee")).getUser().getEmail()%>">--%>
+          <%--</div>--%>
 
-          <div class="form-group">
-            <label for="age">年龄</label>
-            <input type="text" class="form-control" id="age" name="age" placeholder="年龄" value="<%= ((Employee)request.getAttribute("employee")).getUser().getAge()%>">
-          </div>
+          <%--<div class="form-group">--%>
+            <%--<label for="age">年龄</label>--%>
+            <%--<input type="text" class="form-control" id="age" name="age" placeholder="年龄" value="<%= ((Employee)request.getAttribute("employee")).getUser().getAge()%>">--%>
+          <%--</div>--%>
 
           <div class="col-md-offset-5">
             <button type="submit" class="btn btn-default">提交</button>

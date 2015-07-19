@@ -15,7 +15,7 @@
 
   <script src="../../lib/js/jquery-1.11.1.min.js"></script>
   <script src="../../lib/js/bootstrap.min.js"></script>
-  <script src="../../js/updateEmployee.js"></script>
+  <script src="../../js/updateUser.js"></script>
 
 </head>
 <body>
@@ -32,7 +32,7 @@
           </div>
 
           <div class="from-group">
-            <label id="gender" data-value="<%= ((User)request.getAttribute("user")).getName()%>">性别</label>
+            <label id="gender" data-value="<%= ((User)request.getAttribute("user")).getGender()%>">性别</label>
             <label for="male">
               <input type="radio" id="male" name="gender" value=男> 男
             </label>
