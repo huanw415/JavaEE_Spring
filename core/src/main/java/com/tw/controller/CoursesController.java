@@ -1,13 +1,10 @@
 package com.tw.controller;
 
 import com.tw.entity.Course;
+import com.tw.service.CoachService;
 import com.tw.service.CourseService;
-import com.tw.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -24,7 +21,7 @@ public class CoursesController {
     private CourseService courseService;
 
     @Autowired
-    private EmployeeService employeeService;
+    private CoachService coachService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getCoursesPage(){
@@ -35,27 +32,24 @@ public class CoursesController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public ModelAndView getUpdateCoursesPage(@PathVariable int id){
 
-        return new ModelAndView("updateCourse", "course", courseService.getCourseById(id));
+        ModelAndView modelAndView = new ModelAndView("updateCourse");
+
+        modelAndView.addObject("course", courseService.getCourseById(id));
+        modelAndView.addObject("coaches", coachService.getAllCoaches());
+
+        return modelAndView;
     }
 
-//    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-//    public ModelAndView getUpdateUserAge(@PathVariable int id) {
-//
-//        User user = userService.getUserById(id);
-//        return createModelAndView("updateUser", "user", user);
-//    }
-//
-//    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-//    public ModelAndView UpdateUser(@PathVariable int id,
-//                                   @RequestParam String name,
-//                                   @RequestParam String gender,
-//                                   @RequestParam String email,
-//                                   @RequestParam int age,
-//                                   @RequestParam String password){
-//        User user = new User(id, name, gender, email, age, Md5Util.md5(password));
-//        userService.updateUser(user);
-//
-//        return new ModelAndView("redirect:/users");
-//    }
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public void updateCourse(@PathVariable int id,
+                             @RequestParam int coachId,
+                             @RequestParam String courseName){
+        System.out.println("=================================");
+System.out.println(coachService.getCoachById(coachId));
+        System.out.println("=================================");
+
+        Course course = new Course(id, courseName, coachService.getCoachById(coachId));
+        courseService.updateCourse(course);
+    }
 
 }

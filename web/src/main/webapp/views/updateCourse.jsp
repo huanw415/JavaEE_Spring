@@ -28,13 +28,13 @@
         <hr />
         <div class="form-group">
           <label for="name">姓名：</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="姓名" value="<%= ((Course)request.getAttribute("course")).getName()%>">
+          <input type="text" class="form-control" id="name" name="courseName" placeholder="姓名" value="<%= ((Course)request.getAttribute("course")).getName()%>">
         </div>
 
         <div class="from-group">
           <label for="dropdown">教练：</label>
           <div class="dropdown" id ="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <button data-id="<%= ((Course) request.getAttribute("course")).getCoach().getId()%>" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <%= ((Course) request.getAttribute("course")).getCoach().getName()%>
               <span class="caret"></span>
             </button>
@@ -45,8 +45,7 @@
                 for(int i=0; i<coaches.size(); i++){
               %>
               <li>
-                <a type="button" class="chooseCoach" data-name="<%= coaches.get(i).getName()%>"><%= coaches.get(i).getName()%></a>
-
+                <a type="button" class="chooseCoach" data-id="<%= coaches.get(i).getId()%>" data-name="<%= coaches.get(i).getName()%>"><%= coaches.get(i).getName()%></a>
               </li>
               <%
                 }
@@ -55,7 +54,7 @@
           </div>
         </div>
         <div class="col-md-offset-5">
-          <button type="submit" class="btn btn-default">提交</button>
+          <button data-id="<%= ((Course) request.getAttribute("course")).getId() %>" class="btn btn-default submit">提交</button>
           <button type="reset" class="btn btn-default">清空</button>
         </div>
       </div>

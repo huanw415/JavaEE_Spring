@@ -1,7 +1,9 @@
 package com.tw.dao;
 
 import com.tw.Util.HibernateUtil;
+import com.tw.entity.Coach;
 import com.tw.entity.Course;
+import com.tw.service.CourseService;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -39,5 +41,13 @@ public class CourseDao {
 
         session.getTransaction().commit();
         return course;
+    }
+
+    public void updateCourse(Course course) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+        session.update(course);
+        session.getTransaction().commit();
     }
 }

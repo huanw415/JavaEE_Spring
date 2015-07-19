@@ -11,7 +11,7 @@ public class Coach {
     private int id;
     private String name;
     private User user;
-
+//    private List<Course> courses;
 
     @Id
     @Column(name="Id")
@@ -41,4 +41,13 @@ public class Coach {
     public void setUser(User user) {
         this.user = user;
     }
+//
+//    @OneToMany(mappedBy = "coach", fetch = FetchType.LAZY)
+//    public List<Course> getCourses() {
+//        return courses;
+//    }
+//
+//    public void setCourses(List<Course> courses) {
+//        this.courses = courses;
+//    }
 }

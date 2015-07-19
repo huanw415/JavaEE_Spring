@@ -19,4 +19,8 @@ public class CoachService {
     public List<Coach> getAllCoaches(){
         return coachDao.getAllCoaches();
     }
+
+    public Coach getCoachById(int id){
+        return coachDao.getCoachById(id);
+    }
 }

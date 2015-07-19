@@ -12,8 +12,17 @@ public class Course {
 
     private int id;
     private String name;
-    private Employee coach;
+    private Coach coach;
     private List<Customer> customers;
+
+    public Course() {
+    }
+
+    public Course(int id, String name, Coach coach) {
+        this.id = id;
+        this.name = name;
+        this.coach = coach;
+    }
 
     @Id
     @Column(name = "Id")
@@ -36,11 +45,11 @@ public class Course {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CoachId")
-    public Employee getCoach() {
+    public Coach getCoach() {
         return coach;
     }
 
-    public void setCoach(Employee coach) {
+    public void setCoach(Coach coach) {
         this.coach = coach;
     }
 
