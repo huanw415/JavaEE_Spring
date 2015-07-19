@@ -20,4 +20,7 @@ public class EmployeeService {
     public List<Employee> getAllEmployees(){
         return employeeDao.getAllEmployees();
     }
+    public Employee getEmployeeById(int id){
+        return employeeDao.getEmployeeById(id);
+    }
 }

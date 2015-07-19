@@ -2,6 +2,7 @@ package com.tw.controller;
 
 import com.tw.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,5 +21,11 @@ public class EmployeeController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getEmployeesPage(){
         return new ModelAndView("employees", "employees", employeeService.getAllEmployees());
+    }
+
+    @RequestMapping(value = "update/{id}", method = RequestMethod.GET)
+    public ModelAndView getEmployeesUpdatePage(@PathVariable int id){
+
+        return new ModelAndView("employeeUpdate", "employee", employeeService.getEmployeeById(id));
     }
 }

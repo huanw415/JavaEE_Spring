@@ -64,7 +64,7 @@
     </table>
 
     <div>
-        <a type="button" href="./users/creation">添加职员</a>
+        <a type="button" href="./employees/creation">添加职员</a>
     </div>
 
 </div>
