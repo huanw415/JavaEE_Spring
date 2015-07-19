@@ -19,8 +19,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="./index"> 首页 </a></li>
-                    <li class="active"><a href="./users">用户管理</a> </li>
-                    <li><a href="./employees">员工管理</a> </li>
+                    <li><a href="./users">用户管理</a> </li>
+                    <li class="active"><a href="./employees">员工管理</a> </li>
                     <li><a href="./courses">课程管理</a> </li>
                     <li><a href="./customers">顾客管理</a> </li>
                 </ul>
