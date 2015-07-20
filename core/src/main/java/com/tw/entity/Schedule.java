@@ -20,6 +20,11 @@ public class Schedule {
         this.time = time;
     }
 
+    public Schedule(String time, Course course) {
+        this.time = time;
+        this.course = course;
+    }
+
     @Id
     @Column(name = "Id")
     public int getId() {
