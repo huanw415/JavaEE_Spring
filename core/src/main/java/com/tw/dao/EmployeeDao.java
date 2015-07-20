@@ -55,11 +55,25 @@ public class EmployeeDao {
     }
 
     public void createEmployee(Employee employee){
-        System.out.println("=============");
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         session.save(employee);
         session.getTransaction().commit();
+    }
+
+    public Employee getEmployeeByName(String coachName) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+
+        String hql = "FROM Employee where name=:name";
+        Query query = session.createQuery(hql);
+        query.setString("name", coachName);
+        Employee employee = (Employee) query.list().get(0);
+
+        session.getTransaction().commit();
+
+        return employee;
     }
 //    public User getUserById(int id) {
 //

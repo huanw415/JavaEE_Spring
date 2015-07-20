@@ -53,14 +53,6 @@ public class CourseDao {
         session.getTransaction().commit();
     }
 
-    public void createSchedule(Schedule schedule) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-
-        session.beginTransaction();
-        session.save(schedule);
-        session.getTransaction().commit();
-    }
-
     public List<Course> getCourseByCoach(Employee employee) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
@@ -72,5 +64,13 @@ public class CourseDao {
         session.getTransaction().commit();
 
         return courses;
+    }
+
+    public void createCourse(Course course) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+        session.save(course);
+        session.getTransaction().commit();
     }
 }

@@ -27,4 +27,7 @@ public class CourseService {
     public void updateCourse(Course course){
         courseDao.updateCourse(course);
     }
+    public void createCourse(Course course){
+        courseDao.createCourse(course);
+    }
 }

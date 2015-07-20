@@ -20,7 +20,7 @@
 </head>
 <body>
   <div class="container">
-    <form id="new_schedule" name="new_schedule">
+    <form id="new_schedule" name="new_schedule" method="post" action="">
       <div class="row">
         <div class="col-md-offset-4 col-lg-4">
           <h3>添加课程</h3>
@@ -29,7 +29,7 @@
             <label>课程名称:</label>
             <div>
               <label for="courseName">
-                <input type="text" id="courseName" name="courseId">
+                <input type="text" id="courseName" name="courseName">
               </label>
             </div>
           </div>
@@ -41,7 +41,7 @@
             %>
               <div>
                 <label for="<%= employeeList.get(i).getId()%>">
-                  <input type="radio" id="<%= employeeList.get(i).getId()%>" name="coach" value="<%= employeeList.get(i).getName()%>"> <%= employeeList.get(i).getName()%>
+                  <input type="radio" id="<%= employeeList.get(i).getId()%>" name="coachName" value="<%= employeeList.get(i).getName()%>"> <%= employeeList.get(i).getName()%>
                 </label>
               </div>
             <%

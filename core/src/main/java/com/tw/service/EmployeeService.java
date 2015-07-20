@@ -30,4 +30,8 @@ public class EmployeeService {
     public void createEmployee(Employee employee){
         employeeDao.createEmployee(employee);
     }
+
+    public Employee getEmployeeByName(String coachName) {
+        return employeeDao.getEmployeeByName(coachName);
+    }
 }

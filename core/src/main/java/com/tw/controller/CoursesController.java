@@ -57,4 +57,14 @@ public class CoursesController {
     public ModelAndView getCreationPage(){
         return new ModelAndView("createCourse", "coaches", coachService.getAllCoaches());
     }
+
+    @RequestMapping(value = "/creation", method = RequestMethod.POST)
+    public ModelAndView createCourse(@RequestParam String courseName,
+                                     @RequestParam String coachName){
+
+        Course course = new Course(courseName, employeeService.getEmployeeByName(coachName));
+        courseService.createCourse(course);
+        return new ModelAndView("redirect:/courses");
+//        return new ModelAndView("createCourse", "coaches", coachService.getAllCoaches());
+    }
 }

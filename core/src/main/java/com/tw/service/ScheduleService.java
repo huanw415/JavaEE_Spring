@@ -56,6 +56,6 @@ public class ScheduleService {
         Course course = courseDao.getCourseById(courseId);
         Schedule schedule = new Schedule(time, course);
 
-        courseDao.createSchedule(schedule);
+        scheduleDao.createSchedule(schedule);
     }
 }

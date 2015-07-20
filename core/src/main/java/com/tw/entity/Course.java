@@ -24,6 +24,11 @@ public class Course {
         this.employee = employee;
     }
 
+    public Course(String name, Employee employee) {
+        this.name = name;
+        this.employee = employee;
+    }
+
     @Id
     @Column(name = "Id")
     public int getId() {

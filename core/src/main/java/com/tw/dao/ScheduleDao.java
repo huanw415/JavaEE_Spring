@@ -67,4 +67,11 @@ public class ScheduleDao {
         return schedules;
     }
 
+    public void createSchedule(Schedule schedule) {
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+            session.beginTransaction();
+            session.save(schedule);
+            session.getTransaction().commit();
+    }
 }
