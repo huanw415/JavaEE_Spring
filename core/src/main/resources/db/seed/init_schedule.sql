@@ -1,0 +1,4 @@
+INSERT INTO SCHEDULE (Time , CustomerCourseId) VALUES ('2015-07-20', 1);
+INSERT INTO SCHEDULE (Time , CustomerCourseId) VALUES ('2015-07-20', 2);
+INSERT INTO SCHEDULE (Time , CustomerCourseId) VALUES ('2015-07-21', 4);
+INSERT INTO SCHEDULE (Time , CustomerCourseId) VALUES ('2015-07-23', 3);
