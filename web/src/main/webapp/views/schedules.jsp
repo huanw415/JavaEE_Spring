@@ -16,7 +16,7 @@
 
   <script src="./lib/js/jquery-1.11.1.min.js"></script>
   <script src="./lib/js/bootstrap.min.js"></script>
-  
+
 </head>
 <body>
   <div class="container">
@@ -55,7 +55,7 @@
       %>
       <tr>
         <td><%= schedules.get(i).getCourse().getName()%></td>
-        <td><%= schedules.get(i).getTime()%></td>
+        <td><%= schedules.get(i).getTime().toString().substring(0, 10)%></td>
         <td><%= schedules.get(i).getCourse().getEmployee().getName()%></td>
         <td>
           <a href="./schedules/update/<%= schedules.get(i).getId()%>">修改</a>
