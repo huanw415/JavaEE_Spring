@@ -21,6 +21,8 @@
         <mapping class="com.tw.entity.Customer"/>
         <mapping class="com.tw.entity.Course"/>
         <mapping class="com.tw.entity.Coach"/>
-        
+        <mapping class="com.tw.entity.Schedule"/>
+
+
     </session-factory>
 </hibernate-configuration>
