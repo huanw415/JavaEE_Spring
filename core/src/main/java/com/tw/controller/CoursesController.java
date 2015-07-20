@@ -52,4 +52,9 @@ public class CoursesController {
         Course course = new Course(id,courseName, coachService.getCoachById(coachId));
         courseService.updateCourse(course);
     }
+
+    @RequestMapping(value = "/creation", method = RequestMethod.GET)
+    public ModelAndView getCreationPage(){
+        return new ModelAndView("createCourse", "coaches", coachService.getAllCoaches());
+    }
 }
