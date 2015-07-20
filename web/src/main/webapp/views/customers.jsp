@@ -26,6 +26,7 @@
             <li><a href="./employees">员工管理</a> </li>
             <li><a href="./courses">课程管理</a> </li>
             <li class="active"><a href="./customers">顾客管理</a> </li>
+            <li><a href="./schedules">课表管理</a> </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a type="button" href="./logout">退出登录</a></li>
