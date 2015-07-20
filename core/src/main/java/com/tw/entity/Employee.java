@@ -24,6 +24,12 @@ public class Employee {
         this.user = user;
     }
 
+    public Employee(int id, String name, String role) {
+        this.id = id;
+        this.name = name;
+        this.role = role;
+    }
+
     @Id
     @Column(name="Id")
     public int getId() {

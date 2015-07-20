@@ -26,21 +26,21 @@ public class EmployeeController {
         return new ModelAndView("employees", "employees", employeeService.getAllEmployees());
     }
 
-    @RequestMapping(value = "update/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public ModelAndView getEmployeesUpdatePage(@PathVariable int id){
 
         return new ModelAndView("updateEmployee", "employee", employeeService.getEmployeeById(id));
     }
 
-//    @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
-//    public ModelAndView updateEmployee(@PathVariable int id,
-//                               @RequestParam String employeeName,
-//                               @RequestParam String role){
-//
-//        Employee employee = new Employee(employeeName, role);
-//        employeeService.updateEmployee(employee);
-//        return new ModelAndView("redirect:/employees");
-//    }
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public ModelAndView updateEmployee(@PathVariable int id,
+                               @RequestParam String employeeName,
+                               @RequestParam String role){
+
+        Employee employee = new Employee(id, employeeName, role);
+        employeeService.updateEmployee(employee);
+        return new ModelAndView("redirect:/employees");
+    }
 
     @RequestMapping(value = "/creation", method = RequestMethod.GET)
     public ModelAndView getCreationPage(){
