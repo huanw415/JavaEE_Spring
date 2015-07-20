@@ -35,7 +35,7 @@
 
           <div class="from-group">
             <label for="time">时间：</label>
-            <input type="date" class="form-control" id="time" name="time" value="<%= ((Schedule)request.getAttribute("schedule")).getTime().toString().substring(0, 10)%>" >
+            <input type="date" class="form-control" id="time" name="time" value="<%= ((Schedule)request.getAttribute("schedule")).getTime().substring(0, 10)%>" >
           </div>
 
           <div class="col-md-offset-5">

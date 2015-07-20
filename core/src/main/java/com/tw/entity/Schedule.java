@@ -1,7 +1,6 @@
 package com.tw.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by hgwang on 7/20/15.
@@ -10,8 +9,16 @@ import java.util.Date;
 @Table(name = "SCHEDULE")
 public class Schedule {
     private int id;
-    private Date time;
+    private String time;
     private Course course;
+
+    public Schedule() {
+    }
+
+    public Schedule(int id, String time) {
+        this.id = id;
+        this.time = time;
+    }
 
     @Id
     @Column(name = "Id")
@@ -24,11 +31,11 @@ public class Schedule {
     }
 
     @Column(name = "Time")
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

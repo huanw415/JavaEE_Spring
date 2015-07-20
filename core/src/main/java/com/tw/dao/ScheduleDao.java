@@ -36,6 +36,18 @@ public class ScheduleDao {
 
         session.getTransaction().commit();
         return schedule;
+    }
 
+    public void updateSchedule(Schedule schedule){
+
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("update Schedule t set t.time=:time where id=:id");
+
+        query.setInteger("id", schedule.getId());
+        query.setString("time", schedule.getTime());
+
+        query.executeUpdate();
+        session.getTransaction().commit();
     }
 }

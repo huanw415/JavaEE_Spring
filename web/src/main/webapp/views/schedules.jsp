@@ -55,7 +55,7 @@
       %>
       <tr>
         <td><%= schedules.get(i).getCourse().getName()%></td>
-        <td><%= schedules.get(i).getTime().toString().substring(0, 10)%></td>
+        <td><%= schedules.get(i).getTime().substring(0, 10)%></td>
         <td><%= schedules.get(i).getCourse().getEmployee().getName()%></td>
         <td>
           <a href="./schedules/update/<%= schedules.get(i).getId()%>">修改</a>

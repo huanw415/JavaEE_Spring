@@ -1,11 +1,9 @@
 package com.tw.controller;
 
+import com.tw.entity.Schedule;
 import com.tw.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -27,5 +25,15 @@ public class ScheduleController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public ModelAndView getUpdatePage(@PathVariable int id){
         return new ModelAndView("updateSchedule", "schedule", scheduleService.getScheduleById(id));
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public ModelAndView updateSchedule(@PathVariable int id,
+                              @RequestParam String time){
+
+        Schedule schedule = new Schedule(id, time);
+        scheduleService.updateSchedule(schedule);
+
+        return new ModelAndView("redirect:/schedules");
     }
 }
