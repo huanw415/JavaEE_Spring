@@ -41,7 +41,7 @@
     </nav>
 
     <table class="table table-bordered">
-      <caption><h2>用户信息表</h2></caption>
+      <caption><h2>课程信息表</h2></caption>
       <tr>
         <th>名称</th>
         <th>教师</th>
