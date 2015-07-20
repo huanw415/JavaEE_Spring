@@ -19,4 +19,8 @@ public class ScheduleService {
     public List<Schedule> getAllSchedules(){
         return scheduleDao.getAllSchedules();
     }
+
+    public Schedule getScheduleById(int id){
+        return scheduleDao.getScheduleById(id);
+    }
 }
