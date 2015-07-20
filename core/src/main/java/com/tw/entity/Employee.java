@@ -18,10 +18,10 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String name, String role) {
-        this.id = id;
+    public Employee(String name, String role, User user) {
         this.name = name;
         this.role = role;
+        this.user = user;
     }
 
     @Id

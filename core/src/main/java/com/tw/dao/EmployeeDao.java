@@ -40,6 +40,7 @@ public class EmployeeDao {
 
         return employee;
     }
+
     public void updateEmployee(Employee employee){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -50,6 +51,14 @@ public class EmployeeDao {
         query.setString("role", employee.getRole());
 
         query.executeUpdate();
+        session.getTransaction().commit();
+    }
+
+    public void createEmployee(Employee employee){
+        System.out.println("=============");
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        session.save(employee);
         session.getTransaction().commit();
     }
 //    public User getUserById(int id) {

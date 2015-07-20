@@ -1,6 +1,7 @@
 package com.tw.controller;
 
 import com.tw.entity.Employee;
+import com.tw.entity.User;
 import com.tw.service.EmployeeService;
 import com.tw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
+
     @Autowired
     private UserService userService;
 
@@ -30,15 +32,15 @@ public class EmployeeController {
         return new ModelAndView("updateEmployee", "employee", employeeService.getEmployeeById(id));
     }
 
-    @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
-    public ModelAndView updateEmployee(@PathVariable int id,
-                               @RequestParam String employeeName,
-                               @RequestParam String role){
-
-        Employee employee = new Employee(id, employeeName, role);
-        employeeService.updateEmployee(employee);
-        return new ModelAndView("redirect:/employees");
-    }
+//    @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
+//    public ModelAndView updateEmployee(@PathVariable int id,
+//                               @RequestParam String employeeName,
+//                               @RequestParam String role){
+//
+//        Employee employee = new Employee(employeeName, role);
+//        employeeService.updateEmployee(employee);
+//        return new ModelAndView("redirect:/employees");
+//    }
 
     @RequestMapping(value = "/creation", method = RequestMethod.GET)
     public ModelAndView getCreationPage(){
@@ -50,7 +52,11 @@ public class EmployeeController {
     public void createEmployee(@RequestParam String employeeName,
                                @RequestParam String role,
                                @RequestParam String userName){
-        
+
+        User user = userService.getUsersByName(userName).get(0);
+        Employee employee = new Employee(employeeName, role, user);
+
+        employeeService.createEmployee(employee);
 
     }
 }
