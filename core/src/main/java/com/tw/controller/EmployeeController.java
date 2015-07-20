@@ -2,6 +2,7 @@ package com.tw.controller;
 
 import com.tw.entity.Employee;
 import com.tw.service.EmployeeService;
+import com.tw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +16,8 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getEmployeesPage(){
@@ -35,6 +38,19 @@ public class EmployeeController {
         Employee employee = new Employee(id, employeeName, role);
         employeeService.updateEmployee(employee);
         return new ModelAndView("redirect:/employees");
-//        return new ModelAndView("updateEmployee", "employee", employeeService.getEmployeeById(id));
+    }
+
+    @RequestMapping(value = "/creation", method = RequestMethod.GET)
+    public ModelAndView getCreationPage(){
+
+        return new ModelAndView("createEmployee", "users", userService.getAllUsers());
+    }
+
+    @RequestMapping(value = "/creation", method = RequestMethod.POST)
+    public void createEmployee(@RequestParam String employeeName,
+                               @RequestParam String role,
+                               @RequestParam String userName){
+        
+
     }
 }
