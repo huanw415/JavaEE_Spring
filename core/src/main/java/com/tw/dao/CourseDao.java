@@ -3,6 +3,8 @@ package com.tw.dao;
 import com.tw.Util.HibernateUtil;
 import com.tw.entity.Coach;
 import com.tw.entity.Course;
+import com.tw.entity.Employee;
+import com.tw.entity.Schedule;
 import com.tw.service.CourseService;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -49,5 +51,26 @@ public class CourseDao {
         session.beginTransaction();
         session.update(course);
         session.getTransaction().commit();
+    }
+
+    public void createSchedule(Schedule schedule) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+        session.save(schedule);
+        session.getTransaction().commit();
+    }
+
+    public List<Course> getCourseByCoach(Employee employee) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+        Query query= session.createQuery("FROM Course where employee=:employee");
+        query.setParameter("employee", employee);
+        List<Course> courses = query.list();
+
+        session.getTransaction().commit();
+
+        return courses;
     }
 }

@@ -1,6 +1,7 @@
 package com.tw.dao;
 
 import com.tw.Util.HibernateUtil;
+import com.tw.entity.Course;
 import com.tw.entity.Schedule;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -50,4 +51,20 @@ public class ScheduleDao {
         query.executeUpdate();
         session.getTransaction().commit();
     }
+
+    public List<Schedule> getTimeListOfCourse(Course course) {
+
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+
+        Query query = session.createQuery("from Schedule where course=:course");
+        query.setParameter("course", course);
+
+        List<Schedule> schedules = query.list();
+        session.getTransaction().commit();
+
+        return schedules;
+    }
+
 }
