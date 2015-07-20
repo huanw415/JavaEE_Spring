@@ -3,6 +3,7 @@ package com.tw.controller;
 import com.tw.entity.Course;
 import com.tw.service.CoachService;
 import com.tw.service.CourseService;
+import com.tw.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +24,9 @@ public class CoursesController {
     @Autowired
     private CoachService coachService;
 
+    @Autowired
+    private EmployeeService employeeService;
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getCoursesPage(){
         List<Course> courses = courseService.getAllCourses();
@@ -40,19 +44,12 @@ public class CoursesController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public void updateCourse(@PathVariable int id,
-                             @RequestBody int coachId,
-                             @RequestBody String courseName){
-        System.out.println("=================================");
-//        return "===========";
-//System.out.println(coachService.getCoachById(coachId));
-//        System.out.println("=================================");
-//
-//        Course course = new Course(id , courseName, coachService.getCoachById(coachId));
-//        courseService.updateCourse(course);
+                             @RequestParam int coachId,
+                             @RequestParam String courseName){
+
+        Course course = new Course(id,courseName, coachService.getCoachById(coachId));
+        courseService.updateCourse(course);
     }
-
-
-
 }

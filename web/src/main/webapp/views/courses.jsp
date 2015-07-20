@@ -67,6 +67,9 @@
         }
       %>
     </table>
+    <div>
+      <a type="button" href="./courses/creation">添加课程</a>
+    </div>
   </div>
 </body>
 </html>

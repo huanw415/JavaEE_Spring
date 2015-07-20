@@ -35,7 +35,7 @@ public class CoachDao {
 
         session.beginTransaction();
 
-        String hql = "FROM Employeee where id=:id";
+        String hql = "FROM Employee where id=:id";
         Query query = session.createQuery(hql);
         query.setInteger("id", id);
 

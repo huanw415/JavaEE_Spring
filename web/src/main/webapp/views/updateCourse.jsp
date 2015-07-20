@@ -1,4 +1,3 @@
-<%@ page import="com.tw.entity.Coach" %>
 <%@ page import="com.tw.entity.Course" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.tw.entity.Employee" %>
@@ -22,7 +21,7 @@
 <body>
 <div class="container">
 
-  <%--<form>--%>
+  <form>
     <div class="row">
       <div class="col-md-offset-4 col-lg-4">
         <h3>修改用户信息</h3>
@@ -54,13 +53,13 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-offset-5">
-          <button data-id="<%= ((Course) request.getAttribute("course")).getId() %>" class="btn btn-default submit">提交</button>
-          <button type="reset" class="btn btn-default">清空</button>
-        </div>
       </div>
     </div>
-  <%--</form>--%>
+    <div class="col-md-offset-5">
+      <button data-id="<%= ((Course) request.getAttribute("course")).getId() %>" class="btn btn-default submit">提交</button>
+      <button type="reset" class="btn btn-default">清空</button>
+    </div>
+  </form>
 </div>
 </body>
 </html>
