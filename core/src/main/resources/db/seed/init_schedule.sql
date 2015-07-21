@@ -1,4 +1,4 @@
-INSERT INTO SCHEDULE (Time , CourseId, PrivateCustomerId) VALUES ('2015-07-20', 1, 1);
-INSERT INTO SCHEDULE (Time , CourseId) VALUES ('2015-07-20', 3);
-INSERT INTO SCHEDULE (Time , CourseId, PrivateCustomerId) VALUES ('2015-07-21', 4, 2);
-INSERT INTO SCHEDULE (Time , CourseId) VALUES ('2015-07-23', 2);
+-- INSERT INTO SCHEDULE (Time , CourseId, PrivateCustomerId) VALUES ('2015-07-20', 1, 1);
+-- INSERT INTO SCHEDULE (Time , CourseId) VALUES ('2015-07-20', 3);
+-- INSERT INTO SCHEDULE (Time , CourseId, PrivateCustomerId) VALUES ('2015-07-21', 4, 2);
+-- INSERT INTO SCHEDULE (Time , CourseId) VALUES ('2015-07-23', 2);
