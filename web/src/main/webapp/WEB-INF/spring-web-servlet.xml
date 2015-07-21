@@ -23,6 +23,10 @@
         <!--<bean class="com.tw.interceptor.HandlerInterceptor"/>-->
         <mvc:interceptor>
             <mvc:mapping path="/users/**"/>
+            <mvc:mapping path="/customers/**"/>
+            <mvc:mapping path="/courses/**"/>
+            <mvc:mapping path="/schedules/**"/>
+            <mvc:mapping path="/employees/**"/>
             <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
             <bean class="com.tw.interceptor.HandlerInterceptor"/>
         </mvc:interceptor>
