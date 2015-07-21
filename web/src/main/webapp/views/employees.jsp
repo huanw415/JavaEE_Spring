@@ -41,7 +41,6 @@
             <th>用户名</th>
             <th>性别</th>
             <th>邮箱</th>
-            <th>年龄</th>
             <th>修改</th>
         </tr>
         <%
@@ -52,10 +51,22 @@
         <tr>
             <td><%= employees.get(i).getName()%></td>
             <td><%= employees.get(i).getRole()%></td>
-            <td><%= employees.get(i).getUser().getName()%></td>
-            <td><%= employees.get(i).getUser().getGender()%></td>
-            <td><%= employees.get(i).getUser().getEmail()%></td>
-            <td><%= employees.get(i).getUser().getAge()%></td>
+
+            <%
+                String userName = "";
+                String userGender = "";
+                String userEmail = "";
+
+                if(employees.get(i).getUser() != null){
+                    userName = employees.get(i).getUser().getName();
+                    userGender = employees.get(i).getUser().getGender();
+                    userEmail = employees.get(i).getUser().getEmail();
+
+                }
+            %>
+            <td><%= userName%></td>
+            <td><%= userGender%></td>
+            <td><%= userEmail%></td>
             <td>
                 <a href="./employees/update/<%= employees.get(i).getId()%>">修改</a>
             </td>
