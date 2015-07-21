@@ -57,8 +57,8 @@
       %>
       <tr>
         <td><%= schedules.get(i).getCourse().getName()%></td>
-        <td><%= schedules.get(i).getTime().substring(0, 10)%></td>
         <td><%= schedules.get(i).getCourse().getEmployee().getName()%></td>
+        <td><%= schedules.get(i).getTime().substring(0, 10)%></td>
         <% String customer;
           if(schedules.get(i).getCustomer() != null){
             customer = schedules.get(i).getCustomer().getName();
