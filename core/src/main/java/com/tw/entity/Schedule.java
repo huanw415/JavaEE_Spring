@@ -11,6 +11,7 @@ public class Schedule {
     private int id;
     private String time;
     private Course course;
+    private Customer customer;
 
     public Schedule() {
     }
@@ -52,5 +53,15 @@ public class Schedule {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Customer.class)
+    @JoinColumn(name="PrivateCustomerId")
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
