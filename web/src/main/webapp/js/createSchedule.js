@@ -1,13 +1,27 @@
 $(function(){
 
-    $('#customers').hide();
+    function hideCustomer(){
+        $('#title').hide();
+        $('#noneCustomer').hide();
+        $('.customer').hide();
+    }
+
+    hideCustomer();
+
     var form = $('#new_schedule');
 
     $('input:radio[name="courseId"]').on('click', function () {
+
+        hideCustomer();
+        $('#title').show();
+
         var courseName = $(this).data('course');
 
-        if(courseName === 'private'){
-            $('#customers').show();
+        if(courseName !== 'private'){
+
+            $('#noneCustomer').show();
+        }else{
+            $('.customer').show();
         }
 
     });

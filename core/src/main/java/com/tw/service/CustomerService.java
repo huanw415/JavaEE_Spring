@@ -19,4 +19,8 @@ public class CustomerService {
     public List<Customer> getAllCustomers(){
         return customerDao.getAllCustomers();
     }
+
+    public Customer getCustomerById(int customerId) {
+        return customerDao.getCustomerById(customerId);
+    }
 }

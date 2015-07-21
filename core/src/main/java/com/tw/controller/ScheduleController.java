@@ -69,7 +69,7 @@ public class ScheduleController {
         if(timeList.contains(time)){
             return "coach is busy";
         }else{
-            scheduleService.createSchedule(courseId, time);
+            scheduleService.createSchedule(courseId, customerId, time);
             return "coach is not busy";
         }
     }

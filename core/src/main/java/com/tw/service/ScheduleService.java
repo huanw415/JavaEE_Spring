@@ -23,6 +23,9 @@ public class ScheduleService {
     @Autowired
     private CourseDao courseDao;
 
+    @Autowired
+    private CustomerService customerService;
+
     public List<Schedule> getAllSchedules(){
         return scheduleDao.getAllSchedules();
     }
@@ -52,9 +55,16 @@ public class ScheduleService {
         return timeList;
     }
 
-    public void createSchedule(int courseId, String time) {
+    public void createSchedule(int courseId, int customerId, String time) {
         Course course = courseDao.getCourseById(courseId);
-        Schedule schedule = new Schedule(time, course);
+
+        Schedule schedule;
+        if(customerId == 0){
+            schedule= new Schedule(time, course);
+        }else {
+            schedule = new Schedule(time, course, customerService.getCustomerById(customerId));
+
+        }
 
         scheduleDao.createSchedule(schedule);
     }

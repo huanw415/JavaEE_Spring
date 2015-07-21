@@ -26,6 +26,12 @@ public class Schedule {
         this.course = course;
     }
 
+    public Schedule(String time, Course course, Customer customer) {
+        this.time = time;
+        this.course = course;
+        this.customer = customer;
+    }
+
     @Id
     @Column(name = "Id")
     public int getId() {

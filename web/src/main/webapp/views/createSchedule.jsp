@@ -46,12 +46,17 @@
         </div>
 
         <div class="form-group" id="customers">
-          <div><label>顾客:</label></div>
+          <div id="title"><label>顾客:</label></div>
+          <div id="noneCustomer">
+            <label for="none">
+              <input type="radio" id="none" name="customerId" value="0"> none
+            </label>
+          </div>
           <%
             List<Customer> customers = (List<Customer> )request.getAttribute("customers");
             for(int i=0; i<customers.size(); i++){
           %>
-            <div>
+            <div class="customer">
               <label for="<%= customers.get(i).getName() %>">
                 <input type="radio" id="<%= customers.get(i).getName() %>" name="customerId" value="<%= customers.get(i).getId() %>" data-value="<%= customers.get(i).getName() %>"> <%= customers.get(i).getName() %>
               </label>
