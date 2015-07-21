@@ -39,4 +39,12 @@ public class CustomersController {
 
         return new ModelAndView("updateCustomer", "customer", customerService.getCustomerById(id));
     }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public ModelAndView updateCustomer(@PathVariable int id,
+                                       @RequestParam String customerName){
+
+        customerService.updateCustomer(customerService.getCustomerById(id), customerName);
+        return new ModelAndView("redirect:/customers");
+    }
 }

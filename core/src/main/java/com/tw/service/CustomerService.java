@@ -57,4 +57,8 @@ public class CustomerService {
     public void createCustomer(Customer customer) {
         customerDao.createCustomer(customer);
     }
+
+    public void updateCustomer(Customer customer, String customerName) {
+        customerDao.updateCustomer(customer, customerName);
+    }
 }

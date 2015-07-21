@@ -62,4 +62,18 @@ public class CustomerDao {
         session.save(customer);
         session.getTransaction().commit();
     }
+
+    public void updateCustomer(Customer customer, String customerName) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+
+        String hql = "update Customer t set t.name=:name where id=:id";
+        Query query = session.createQuery(hql);
+        query.setInteger("id", customer.getId());
+        query.setString("name", customerName);
+        query.executeUpdate();
+
+        session.getTransaction().commit();
+    }
 }

@@ -65,6 +65,5 @@ public class CoursesController {
         Course course = new Course(courseName, employeeService.getEmployeeByName(coachName));
         courseService.createCourse(course);
         return new ModelAndView("redirect:/courses");
-//        return new ModelAndView("createCourse", "coaches", coachService.getAllCoaches());
     }
 }
