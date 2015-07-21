@@ -2,6 +2,7 @@ package com.tw.controller;
 
 import com.tw.entity.Schedule;
 import com.tw.service.CourseService;
+import com.tw.service.CustomerService;
 import com.tw.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,9 @@ public class ScheduleController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private CustomerService customerService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getSchedulesPage(){
@@ -46,7 +50,13 @@ public class ScheduleController {
     @RequestMapping(value = "/creation", method = RequestMethod.GET)
     public ModelAndView getCreatePage(){
 
-        return new ModelAndView("createSchedule", "courses", courseService.getAllCourses());
+        ModelAndView modelAndView = new ModelAndView("createSchedule");
+
+        modelAndView.addObject("courses", courseService.getAllCourses());
+        modelAndView.addObject("customers", customerService.getAllCustomers());
+
+
+        return modelAndView;
     }
 
     @RequestMapping(value = "/creation", method = RequestMethod.POST)

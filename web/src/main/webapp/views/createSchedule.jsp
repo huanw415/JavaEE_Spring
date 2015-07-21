@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.tw.entity.Course" %>
 <%@ page import="org.w3c.dom.ls.LSException" %>
+<%@ page import="com.tw.entity.Customer" %>
 <%--
   Created by IntelliJ IDEA.
   User: hgwang
@@ -36,9 +37,25 @@
 
           <div>
             <label for="<%= courses.get(i).getName() %>">
-                <input type="radio" id="<%= courses.get(i).getName() %>" name="courseId" value="<%= courses.get(i).getId() %>"> <%= courses.get(i).getName() %>&nbsp;&nbsp;<%= courses.get(i).getEmployee().getName() %>
+                <input type="radio" id="<%= courses.get(i).getName() %>" name="courseId" value="<%= courses.get(i).getId() %>" data-course="<%= courses.get(i).getName() %>"> <%= courses.get(i).getName() %>&nbsp;&nbsp;<%= courses.get(i).getEmployee().getName() %>
             </label>
           </div>
+          <%
+            }
+          %>
+        </div>
+
+        <div class="form-group" id="customers">
+          <div><label>顾客:</label></div>
+          <%
+            List<Customer> customers = (List<Customer> )request.getAttribute("customers");
+            for(int i=0; i<customers.size(); i++){
+          %>
+            <div>
+              <label for="<%= customers.get(i).getName() %>">
+                <input type="radio" id="<%= customers.get(i).getName() %>" name="customerId" value="<%= customers.get(i).getId() %>" data-value="<%= customers.get(i).getName() %>"> <%= customers.get(i).getName() %>
+              </label>
+            </div>
           <%
             }
           %>

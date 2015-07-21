@@ -1,5 +1,16 @@
 $(function(){
+
+    $('#customers').hide();
     var form = $('#new_schedule');
+
+    $('input:radio[name="courseId"]').on('click', function () {
+        var courseName = $(this).data('course');
+
+        if(courseName === 'private'){
+            $('#customers').show();
+        }
+
+    });
 
     form.submit(function (ev) {
         $.ajax({
