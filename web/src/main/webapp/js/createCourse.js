@@ -11,7 +11,7 @@ $(function(){
                 if(result == 'the course has existed'){
                     $('#courseName').css('border', "red 1px solid");
                 }else{
-                    $(location).attr('href', '/web/schedules');
+                    $(location).attr('href', '/web/courses');
                 }
             }
         });
