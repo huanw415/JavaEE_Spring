@@ -14,6 +14,13 @@ public class Customer {
     private String name;
     private List<Course> courses;
 
+    public Customer() {
+    }
+
+    public Customer(String name) {
+        this.name = name;
+    }
+
     @Id
     @Column(name="Id")
     public int getId() {

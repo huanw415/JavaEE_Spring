@@ -54,4 +54,12 @@ public class CustomerDao {
 
         session.getTransaction().commit();
     }
+
+    public void createCustomer(Customer customer) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+        session.save(customer);
+        session.getTransaction().commit();
+    }
 }

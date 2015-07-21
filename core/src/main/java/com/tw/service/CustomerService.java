@@ -53,4 +53,8 @@ public class CustomerService {
     public void updateCourseOfCustomer(Course course, Customer customer) {
         customerDao.updateCourseOfCustomer(course, customer);
     }
+
+    public void createCustomer(Customer customer) {
+        customerDao.createCustomer(customer);
+    }
 }
