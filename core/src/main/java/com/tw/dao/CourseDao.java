@@ -73,4 +73,12 @@ public class CourseDao {
         session.save(course);
         session.getTransaction().commit();
     }
+
+    public void deleteCourse(Course course) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+        session.delete(course);
+        session.getTransaction().commit();
+    }
 }

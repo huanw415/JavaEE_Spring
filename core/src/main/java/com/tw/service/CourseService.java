@@ -1,6 +1,7 @@
 package com.tw.service;
 
 import com.tw.dao.CourseDao;
+import com.tw.dao.ScheduleDao;
 import com.tw.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,9 @@ public class CourseService {
     @Autowired
     private CourseDao courseDao;
 
+    @Autowired
+    private ScheduleDao scheduleDao;
+
     public List<Course> getAllCourses(){
         return courseDao.getAllCourses();
     }
@@ -29,5 +33,10 @@ public class CourseService {
     }
     public void createCourse(Course course){
         courseDao.createCourse(course);
+    }
+
+    public void deleteCourse(int id) {
+        Course course = courseDao.getCourseById(id);
+        courseDao.deleteCourse(course);
     }
 }

@@ -58,24 +58,6 @@ public class CoursesController {
         return new ModelAndView("createCourse", "coaches", coachService.getAllCoaches());
     }
 
-//    @RequestMapping(value = "/creation", method = RequestMethod.POST)
-//    public ModelAndView createCourse(@RequestParam String courseName,
-//                                     @RequestParam String coachName){
-//
-////        String message = "the course has not existed";
-////        List<Course> courses = courseService.getAllCourses();
-////        for(int i=0; i<courses.size(); i++){
-////            if(courses.get(i).getName().equals(coachName)){
-////
-////                 message ="the course has existed";
-////            }
-////        }
-//
-//        Course course = new Course(courseName, employeeService.getEmployeeByName(coachName));
-//        courseService.createCourse(course);
-//        return new ModelAndView("redirect:/courses");
-//    }
-
     @RequestMapping(value = "/creation", method = RequestMethod.POST)
     public String createCourse(@RequestParam String courseName,
                                      @RequestParam String coachName){
@@ -92,5 +74,10 @@ public class CoursesController {
         courseService.createCourse(course);
 
         return "the course has not existed";
+    }
+
+    @RequestMapping(value = "/deletion/{id}", method = RequestMethod.DELETE)
+    public void deleteCourseById(@PathVariable int id){
+        courseService.deleteCourse(id);
     }
 }
