@@ -77,6 +77,9 @@
         }
       %>
     </table>
+    <div>
+      <a type="button" href="./customers/creation">添加顾客</a>
+    </div>
 
   </div>
 </body>
