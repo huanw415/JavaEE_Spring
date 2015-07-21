@@ -27,12 +27,6 @@ public class LogController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private CourseService courseService;
-//
-//    @Autowired
-//    private CustomerService customerService;
-
     private String getPreviousPageUrl(String previousUrl){
         String previousPageUrl = "index";
         if(!previousUrl.equals("")){
@@ -43,9 +37,6 @@ public class LogController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView getLoginPage() {
-//System.out.println("==============================");
-//System.out.println(customerService.getAllCustomers().get(0).getCourses().get(0).getName());
-//System.out.println("==============================");
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("logIn");

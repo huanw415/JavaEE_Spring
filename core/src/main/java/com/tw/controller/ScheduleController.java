@@ -55,9 +55,6 @@ public class ScheduleController {
         modelAndView.addObject("courses", courseService.getAllCourses());
         modelAndView.addObject("customers", customerService.getCustomersWithOutPrivate());
 
-//        modelAndView.addObject("customers", customerService.getAllCustomers());
-
-
         return modelAndView;
     }
 

@@ -31,21 +31,20 @@ public class CustomerService {
         List<Customer> customerResultList = new ArrayList<Customer>();
 
 
-        for(int i=0; i<customers.size(); i++){
+        for (Customer customer : customers) {
             int times = 0;
 
-            List<Course> courses = customers.get(i).getCourses();
+            List<Course> courses = customer.getCourses();
 
-            for(int j=0; j<courses.size(); j++){
+            for (Course course : courses) {
 
-                if(courses.get(j).getName().equals("private")){
+                if (course.getName().equals("private")) {
                     times++;
                 }
             }
 
-            if(times == 0){
-                customerResultList.add(customers.get(i));
-
+            if (times == 0) {
+                customerResultList.add(customer);
             }
         }
         return customerResultList;
