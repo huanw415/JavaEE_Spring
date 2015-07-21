@@ -1,3 +1,8 @@
+<%@ page import="com.tw.entity.Customer" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.tw.entity.Course" %>
+<%@ page import="org.dom4j.io.ElementModifier" %>
+<%@ page import="com.tw.entity.Employee" %>
 <%--
   Created by IntelliJ IDEA.
   User: hgwang
@@ -34,6 +39,45 @@
         </div>
       </div>
     </nav>
+
+    <table class="table table-bordered">
+      <caption><h2>职员信息表</h2></caption>
+      <tr>
+        <th>姓名</th>
+        <th>私教</th>
+        <th>修改</th>
+        <th>删除</th>
+      </tr>
+      <%
+        List<Customer> customers = (List<Customer>)request.getAttribute("customers");
+
+        for(int i=0; i<customers.size(); i++){
+      %>
+      <tr>
+        <td><%= customers.get(i).getName()%></td>
+        <%
+          String coach = "";
+          List<Course> courses = customers.get(i).getCourses();
+          for(int j=0; j<courses.size(); j++){
+            if(courses.get(j).getName().equals("private")){
+
+              coach = courses.get(j).getEmployee().getName();
+            }
+          }
+        %>
+        <td><%= coach %></td>
+        <td>
+          <a href="./customers/update/<%= customers.get(i).getId()%>">修改</a>
+        </td>
+        <td>
+          <a href="./customers/delete/<%= customers.get(i).getId()%>">删除</a>
+        </td>
+      </tr>
+      <%
+        }
+      %>
+    </table>
+
   </div>
 </body>
 </html>
