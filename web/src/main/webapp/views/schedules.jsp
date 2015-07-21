@@ -16,6 +16,7 @@
 
   <script src="./lib/js/jquery-1.11.1.min.js"></script>
   <script src="./lib/js/bootstrap.min.js"></script>
+  <script src="./js/schedules.js"></script>
 
 </head>
 <body>

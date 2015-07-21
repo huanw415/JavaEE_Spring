@@ -74,4 +74,12 @@ public class ScheduleDao {
             session.save(schedule);
             session.getTransaction().commit();
     }
+
+    public void deleteScheduleById(Schedule schedule) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+        session.delete(schedule);
+        session.getTransaction().commit();
+    }
 }

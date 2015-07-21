@@ -58,4 +58,9 @@ public class ScheduleService {
 
         scheduleDao.createSchedule(schedule);
     }
+
+    public void deleteScheduleById(int id) {
+        Schedule schedule = scheduleDao.getScheduleById(id);
+        scheduleDao.deleteScheduleById(schedule);
+    }
 }

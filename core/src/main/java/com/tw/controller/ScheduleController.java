@@ -63,4 +63,9 @@ public class ScheduleController {
             return "coach is not busy";
         }
     }
+
+    @RequestMapping(value = "/deletion/{id}", method = RequestMethod.DELETE)
+    public void deleteSchedule(@PathVariable int id){
+        scheduleService.deleteScheduleById(id);
+    }
 }
