@@ -57,6 +57,7 @@
     </div>
     <div class="col-md-offset-5">
       <button data-id="<%= ((Course) request.getAttribute("course")).getId() %>" class="btn btn-default submit">提交</button>
+      <a type="button" class="btn btn-default" href="/web/courses">返回</a>
       <button type="reset" class="btn btn-default">清空</button>
     </div>
   </form>

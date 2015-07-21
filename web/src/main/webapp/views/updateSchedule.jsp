@@ -40,6 +40,7 @@
 
           <div class="col-md-offset-5">
             <button type="submit" class="btn btn-default">提交</button>
+            <a type="button" class="btn btn-default" href="/web/schedules">返回</a>
             <button type="reset" class="btn btn-default">清空</button>
           </div>
         </div>

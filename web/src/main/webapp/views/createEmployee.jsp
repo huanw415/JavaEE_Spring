@@ -72,6 +72,7 @@
       </div>
       <div class="col-md-offset-5">
         <a type="button" class="btn btn-default submit">提交</a>
+        <a type="button" class="btn btn-default" href="/web/employees">返回</a>
         <button type="reset" class="btn btn-default">清空</button>
       </div>
     </form>
