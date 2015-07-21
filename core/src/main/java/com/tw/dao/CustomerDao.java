@@ -76,4 +76,12 @@ public class CustomerDao {
 
         session.getTransaction().commit();
     }
+
+    public void deleteCustomer(Customer customer) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+        session.delete(customer);
+        session.getTransaction().commit();
+    }
 }

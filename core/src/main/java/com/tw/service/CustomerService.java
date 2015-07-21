@@ -61,4 +61,10 @@ public class CustomerService {
     public void updateCustomer(Customer customer, String customerName) {
         customerDao.updateCustomer(customer, customerName);
     }
+
+    public void deleteCustomer(Customer customer) {
+        if(customer.getCourses().size() == 0){
+            customerDao.deleteCustomer(customer);
+        }
+    }
 }

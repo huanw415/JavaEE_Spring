@@ -19,6 +19,8 @@
 
   <script src="./lib/js/jquery-1.11.1.min.js"></script>
   <script src="./lib/js/bootstrap.min.js"></script>
+
+  <script src="./js/customers.js"></script>
 </head>
 <body>
   <div class="container">
@@ -41,7 +43,7 @@
     </nav>
 
     <table class="table table-bordered">
-      <caption><h2>职员信息表</h2></caption>
+      <caption><h2>顾客信息表</h2></caption>
       <tr>
         <th>姓名</th>
         <th>私教</th>
@@ -70,7 +72,8 @@
           <a href="./customers/update/<%= customers.get(i).getId()%>">修改</a>
         </td>
         <td>
-          <a href="./customers/delete/<%= customers.get(i).getId()%>">删除</a>
+          <a type="button" class="deleteCustomer" data-id="<%= customers.get(i).getId()%>">删除</a>
+          <%--<a type="button" class="deleteSchedule" data-id="<%= schedules.get(i).getId()%>">删除</a>--%>
         </td>
       </tr>
       <%

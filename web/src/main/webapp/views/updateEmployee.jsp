@@ -42,7 +42,7 @@
               <input type="radio" id="HR" name="role" value="HR"> HR
             </label>
           </div>
-          
+
           <div class="col-md-offset-5">
             <button type="submit" class="btn btn-default">提交</button>
             <a type="button" class="btn btn-default" href="/web/employees">返回</a>

@@ -47,4 +47,10 @@ public class CustomersController {
         customerService.updateCustomer(customerService.getCustomerById(id), customerName);
         return new ModelAndView("redirect:/customers");
     }
+
+    @RequestMapping(value = "/deletion/{id}", method = RequestMethod.DELETE)
+    public void deleteCustomerById(@PathVariable int id){
+        Customer customer = customerService.getCustomerById(id);
+        customerService.deleteCustomer(customer);
+    }
 }
