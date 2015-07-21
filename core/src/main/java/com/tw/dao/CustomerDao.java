@@ -1,6 +1,7 @@
 package com.tw.dao;
 
 import com.tw.Util.HibernateUtil;
+import com.tw.entity.Course;
 import com.tw.entity.Customer;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -39,5 +40,18 @@ public class CustomerDao {
         session.getTransaction().commit();
 
         return customer;
+    }
+
+    public void updateCourseOfCustomer(Course course, Customer customer) {
+
+        List<Course> courses = customer.getCourses();
+        courses.add(course);
+        customer.setCourses(courses);
+
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        session.update(customer);
+
+        session.getTransaction().commit();
     }
 }

@@ -50,4 +50,8 @@ public class CustomerService {
         }
         return customerResultList;
     }
+
+    public void updateCourseOfCustomer(Course course, Customer customer) {
+        customerDao.updateCourseOfCustomer(course, customer);
+    }
 }

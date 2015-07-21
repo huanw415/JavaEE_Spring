@@ -3,6 +3,7 @@ package com.tw.service;
 import com.tw.dao.CourseDao;
 import com.tw.dao.ScheduleDao;
 import com.tw.entity.Course;
+import com.tw.entity.Customer;
 import com.tw.entity.Employee;
 import com.tw.entity.Schedule;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,9 @@ public class ScheduleService {
         if(customerId == 0){
             schedule= new Schedule(time, course);
         }else {
-            schedule = new Schedule(time, course, customerService.getCustomerById(customerId));
+            Customer customer = customerService.getCustomerById(customerId);
+            customerService.updateCourseOfCustomer(course, customer);
+            schedule = new Schedule(time, course, customer);
 
         }
 
