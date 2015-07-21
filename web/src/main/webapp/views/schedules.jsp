@@ -46,6 +46,7 @@
         <th>课程名称</th>
         <th>时间</th>
         <th>教师</th>
+        <th>顾客</th>
         <th>修改</th>
         <th>删除</th>
       </tr>
@@ -58,6 +59,15 @@
         <td><%= schedules.get(i).getCourse().getName()%></td>
         <td><%= schedules.get(i).getTime().substring(0, 10)%></td>
         <td><%= schedules.get(i).getCourse().getEmployee().getName()%></td>
+        <% String customer;
+          if(schedules.get(i).getCustomer() != null){
+            customer = schedules.get(i).getCustomer().getName();
+          }else {
+            customer = "";
+          }
+        %>
+        <td><%= customer%></td>
+
         <td>
           <a href="./schedules/update/<%= schedules.get(i).getId()%>">修改</a>
         </td>

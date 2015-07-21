@@ -61,8 +61,8 @@ public class ScheduleController {
 
     @RequestMapping(value = "/creation", method = RequestMethod.POST)
     public String createSchedule(@RequestParam int courseId,
-                               @RequestParam String time){
-
+                                 @RequestParam int customerId,
+                                 @RequestParam String time){
 
         List<String> timeList = scheduleService.getTimeListOfCourse(courseId);
 
