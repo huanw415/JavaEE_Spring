@@ -58,10 +58,7 @@ public class Course {
         this.employee = employee;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "CUSTOMER_COURSE",
-            joinColumns = {@JoinColumn(name = "CourseId")},
-            inverseJoinColumns = {@JoinColumn(name = "CustomerId")})
+    @ManyToMany(mappedBy = "courses")
     public List<Customer> getCustomers() {
         return customers;
     }

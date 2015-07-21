@@ -33,7 +33,10 @@ public class Customer {
         this.name = name;
     }
 
-    @ManyToMany(mappedBy = "customers")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "CUSTOMER_COURSE",
+            joinColumns = {@JoinColumn(name = "CustomerId")},
+            inverseJoinColumns = {@JoinColumn(name = "CourseId")})
     public List<Course> getCourses() {
         return courses;
     }
