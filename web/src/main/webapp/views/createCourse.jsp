@@ -16,11 +16,11 @@
 
   <script src="../lib/js/jquery-1.11.1.min.js"></script>
   <script src="../lib/js/bootstrap.min.js"></script>
-  <%--<script src="../../js/updateCourse.js"></script>--%>
+  <script src="../js/createCourse.js"></script>
 </head>
 <body>
   <div class="container">
-    <form id="new_schedule" name="new_schedule" method="post" action="">
+    <form id="new_course" name="new_schedule">
       <div class="row">
         <div class="col-md-offset-4 col-lg-4">
           <h3>添加课程</h3>
